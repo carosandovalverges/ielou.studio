@@ -9,15 +9,16 @@ Sitio estático en HTML/CSS/JS puro (sin backend), pensado como base visual para
 ```
 Ielou.studio/
 ├── index.html        Home
-├── portafolio.html    Portafolio / artes visuales
-├── producto.html       Detalle de producto (plantilla genérica)
-├── checkout.html        Checkout / solicitud de compra
-├── contacto.html          Contacto
-├── proyecto.html            Detalle de proyecto (plantilla genérica)
+├── tienda.html         Catálogo completo (buscador + filtro por categoría)
+├── portafolio.html       Portafolio / artes visuales
+├── producto.html           Detalle de producto (plantilla genérica)
+├── checkout.html             Checkout / solicitud de compra
+├── contacto.html                Contacto
+├── proyecto.html                   Detalle de proyecto (plantilla genérica)
 ├── css/
 │   └── tokens.css     Variables de diseño (fuente única de verdad)
 ├── js/
-│   └── main.js        Comportamiento compartido (menú mobile, galería, checkout, carrusel)
+│   └── main.js        Comportamiento compartido (menú mobile, galería, checkout, carrusel, filtros de tienda)
 └── img/
     ├── productos/      Fotos de piezas a la venta
     ├── portafolio/      Fotos de obras del portafolio
@@ -63,8 +64,9 @@ unificó todo a un solo sistema y se corrigió:
 - Botones "Comprar" en Home eran `<button>` sin acción; ahora son `<a>` como
   en el resto del sitio.
 - El trigger "Tienda" del menú era `<a href="#">` en la mayoría de páginas
-  (saltaba al inicio de la página al hacer clic); ahora es `<button>` en
-  todas.
+  (saltaba al inicio de la página al hacer clic); se dejó como `<button>`
+  mientras no existía una página de tienda real, y ahora que `tienda.html`
+  existe, es un `<a href="tienda.html">` en las 6 páginas.
 - Checkout usaba un set de íconos SVG propio distinto al resto (Material
   Symbols); se unificó a Material Symbols.
 - Contacto tenía contenido en inglés y un bug que duplicaba las 8 preguntas
@@ -81,6 +83,18 @@ unificó todo a un solo sistema y se corrigió:
   "Solicitar compra") → `checkout.html` (formulario completo con selección
   de envío/región/comuna). La versión anterior con formulario embebido +
   `mailto:` se descartó.
+- Faltaba la página de Tienda: los links "Tienda" del menú, el botón "Ver
+  tienda" del hero, las tarjetas de categorías de Home y el footer apuntaban
+  a `#tienda` (un ancla dentro de Home) o a `portafolio.html`, sin destino
+  real. Se creó `tienda.html` (catálogo completo con buscador y filtro por
+  categoría, adaptado desde un diseño de Stitch pero llevado a nuestro
+  sistema de tipografía/espaciado/color) y se corrigieron **77 links** rotos
+  en las 6 páginas para que apunten ahí. El dropdown "Tienda" del menú y las
+  tarjetas de categoría ahora deep-linkean a la categoría correcta
+  (`tienda.html#pinturas`, `#prints`, `#timbres`, `#objetos`).
+- El trigger "Tienda" del menú era un `<button>` sin destino propio (a
+  propósito, mientras no existía la página); ahora que `tienda.html` existe,
+  es un `<a>` real en las 6 páginas.
 
 ## Pendientes / cosas a confirmar con Caro antes de producción
 
@@ -95,10 +109,11 @@ unificó todo a un solo sistema y se corrigió:
   Confirmar también si esa casilla existe o si debe ir a otro correo.
   Considerar también reCAPTCHA/Turnstile si el formulario recibe spam.
 - [ ] **`producto.html` / `proyecto.html`** son plantillas genéricas de una
-  sola pieza ("Vasija Escultural 'Silencio'" / "Resonancia Estática"). No
-  existe todavía un listado real por producto — el developer deberá
-  duplicar la plantilla por cada pieza en venta (o generarla dinámicamente
-  vía WooCommerce si el proyecto crece a catálogo real).
+  sola pieza ("Vasija Escultural 'Silencio'" / "Resonancia Estática"). Todos
+  los botones "Comprar" del sitio (incluidos los 16 de `tienda.html`) apuntan
+  hoy a esa misma plantilla genérica — el developer deberá duplicarla por
+  cada pieza real en venta (o generarla dinámicamente vía WooCommerce si el
+  proyecto crece a catálogo real).
 - [ ] **Checkout no procesa pagos**: es un formulario que arma un resumen y
   muestra un mensaje de éxito simulado (sin backend). Definir con Caro si el
   flujo real será manual (transferencia + WhatsApp/email) o si se integrará

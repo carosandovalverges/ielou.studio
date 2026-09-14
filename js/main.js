@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initProductGallery();
   initCheckoutForm();
   initProjectCarousel();
+  initTiendaFilters();
 });
 
 /* ---------- Menú mobile (header) ---------- */
@@ -198,11 +199,13 @@ function initProjectCarousel() {
 
   const prevBtn = document.getElementById('carousel-prev');
   const nextBtn = document.getElementById('carousel-next');
-  if (prevBtn) prevBtn.addEventListener('click', () => {
+  if (prevBtn) prevBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
     currentSlide = (currentSlide - 1 + projectImages.length) % projectImages.length;
     updateCarousel();
   });
-  if (nextBtn) nextBtn.addEventListener('click', () => {
+  if (nextBtn) nextBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
     currentSlide = (currentSlide + 1) % projectImages.length;
     updateCarousel();
   });
@@ -243,4 +246,96 @@ function initProjectCarousel() {
   if (modal) modal.addEventListener('click', closeModal);
   const closeBtn = document.getElementById('modal-close-btn');
   if (closeBtn) closeBtn.addEventListener('click', (e) => { e.stopPropagation(); closeModal(); });
+}
+
+/* ---------- Tienda: búsqueda + filtro por categoría ---------- */
+function initTiendaFilters() {
+  const searchInput = document.getElementById('search-input');
+  const filterPills = document.querySelectorAll('.filter-pill');
+  const categoryBlocks = document.querySelectorAll('.category-block');
+  const seeMoreButtons = document.querySelectorAll('.category-see-more');
+  const noResultsBox = document.getElementById('no-results');
+  const itemCounter = document.getElementById('item-counter');
+  if (!searchInput || !filterPills.length) return;
+
+  let currentCategory = 'todas';
+  let searchQuery = '';
+
+  function setActivePill(pill) {
+    filterPills.forEach((p) => {
+      p.classList.remove('bg-primary', 'text-on-primary', 'shadow-sm');
+      p.classList.add('bg-neutral-100', 'text-on-surface-variant', 'hover:bg-neutral-200');
+    });
+    pill.classList.remove('bg-neutral-100', 'text-on-surface-variant', 'hover:bg-neutral-200');
+    pill.classList.add('bg-primary', 'text-on-primary', 'shadow-sm');
+  }
+
+  function filterCatalog() {
+    let totalVisible = 0;
+
+    categoryBlocks.forEach((block) => {
+      const blockCategory = block.getAttribute('data-category-type');
+      const products = block.querySelectorAll('.product-item');
+      let blockMatches = 0;
+      const categoryMatch = currentCategory === 'todas' || currentCategory === blockCategory;
+
+      if (!categoryMatch) {
+        block.style.display = 'none';
+        return;
+      }
+
+      products.forEach((product) => {
+        const title = product.getAttribute('data-title') || '';
+        const tags = product.getAttribute('data-tags') || '';
+        const textContent = (title + ' ' + tags).toLowerCase();
+        const matchesSearch = searchQuery === '' || textContent.includes(searchQuery.toLowerCase().trim());
+
+        if (matchesSearch) {
+          product.style.display = 'flex';
+          blockMatches++;
+          totalVisible++;
+        } else {
+          product.style.display = 'none';
+        }
+      });
+
+      block.style.display = blockMatches > 0 ? 'block' : 'none';
+    });
+
+    if (noResultsBox) noResultsBox.classList.toggle('hidden', totalVisible !== 0);
+    if (itemCounter) {
+      itemCounter.textContent = `${totalVisible} ${totalVisible === 1 ? 'pieza disponible' : 'piezas disponibles'} en el taller`;
+    }
+  }
+
+  filterPills.forEach((pill) => {
+    pill.addEventListener('click', () => {
+      setActivePill(pill);
+      currentCategory = pill.getAttribute('data-category');
+      filterCatalog();
+    });
+  });
+
+  seeMoreButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const target = btn.getAttribute('data-target-category');
+      const targetPill = document.querySelector(`.filter-pill[data-category="${target}"]`);
+      if (targetPill) {
+        targetPill.click();
+        const toolbar = document.getElementById('filter-pills');
+        if (toolbar) window.scrollTo({ top: toolbar.offsetTop - 100, behavior: 'smooth' });
+      }
+    });
+  });
+
+  searchInput.addEventListener('input', (e) => {
+    searchQuery = e.target.value;
+    filterCatalog();
+  });
+
+  const hashCategory = window.location.hash.replace('#', '');
+  const hashPill = document.querySelector(`.filter-pill[data-category="${hashCategory}"]`);
+  if (hashPill) {
+    hashPill.click();
+  }
 }
