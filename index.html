@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ielou.studio — Arte, Gráfica y Objetos</title>
+<meta name="description" content="Piezas hechas a mano, artes visuales y diseño. Pintura, cerámica, prints y timbres by Carola Sandoval.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          primary: "#000000",
+          "on-primary": "#ffffff",
+          background: "#f9f9f9",
+          surface: "#ffffff",
+          "on-surface": "#1b1b1b",
+          "on-surface-variant": "#57534e",
+          "outline-variant": "#e5e5e5",
+          accent: "#ffe16d",
+          "accent-dark": "#e9c400"
+        },
+        fontFamily: {
+          heading: ["Montserrat", "sans-serif"],
+          body: ["Inter", "sans-serif"]
+        }
+      }
+    }
+  };
+</script>
+<link rel="stylesheet" href="css/tokens.css">
+</head>
+<body class="bg-background text-on-surface font-body min-h-screen flex flex-col antialiased selection:bg-accent selection:text-black">
+
+<!-- ============ HEADER ============ -->
+<header class="bg-white/90 backdrop-blur-md fixed top-0 w-full z-50 border-b border-outline-variant transition-all">
+  <div class="px-6 md:px-16 lg:px-24 py-5 flex justify-between items-center w-full max-w-[1920px] mx-auto">
+    <a href="index.html" class="font-heading text-2xl font-bold tracking-tight text-primary lowercase hover:opacity-80 transition-opacity">ielou.studio</a>
+
+    <nav class="hidden md:flex gap-8 items-center">
+      <a href="index.html" class="text-xs tracking-widest uppercase font-semibold font-body text-primary border-b-2 border-primary pb-0.5 transition-colors">Inicio</a>
+      <div class="relative group py-2">
+        <button type="button" class="text-xs tracking-widest uppercase font-semibold font-body text-on-surface-variant group-hover:text-primary transition-colors flex items-center gap-1">
+          Tienda
+          <span class="material-symbols-outlined text-base transition-transform group-hover:rotate-180">expand_more</span>
+        </button>
+        <div class="absolute left-0 top-full hidden group-hover:flex flex-col bg-white border border-outline-variant shadow-xl py-3 w-48 z-50 transition-all">
+          <a href="#tienda" class="px-5 py-2 text-xs font-semibold uppercase tracking-wider text-on-surface hover:bg-accent/30 hover:text-primary transition-colors">Ver todo</a>
+          <a href="#tienda" class="px-5 py-2 text-xs uppercase tracking-wider text-on-surface-variant hover:bg-accent/30 hover:text-primary transition-colors">Pinturas</a>
+          <a href="#tienda" class="px-5 py-2 text-xs uppercase tracking-wider text-on-surface-variant hover:bg-accent/30 hover:text-primary transition-colors">Prints</a>
+          <a href="#tienda" class="px-5 py-2 text-xs uppercase tracking-wider text-on-surface-variant hover:bg-accent/30 hover:text-primary transition-colors">Timbres</a>
+          <a href="#tienda" class="px-5 py-2 text-xs uppercase tracking-wider text-on-surface-variant hover:bg-accent/30 hover:text-primary transition-colors">Objetos</a>
+        </div>
+      </div>
+      <a href="portafolio.html" class="text-xs tracking-widest uppercase font-semibold font-body text-on-surface-variant hover:text-primary transition-colors">Portafolio</a>
+      <a href="contacto.html" class="text-xs tracking-widest uppercase font-semibold font-body text-on-surface-variant hover:text-primary transition-colors">Contacto</a>
+    </nav>
+
+    <div class="flex items-center gap-4">
+      <a href="#tienda" aria-label="Bolsa de compra" class="relative p-1 hover:opacity-75 transition-opacity text-primary flex items-center justify-center">
+        <span class="material-symbols-outlined text-[26px]">shopping_bag</span>
+        <span class="absolute -top-1 -right-1 w-4 h-4 bg-accent text-primary text-[10px] font-bold rounded-full flex items-center justify-center border border-black/10 leading-none">0</span>
+      </a>
+      <button id="mobile-menu-btn" aria-label="Abrir menú" aria-expanded="false" class="md:hidden p-1 text-primary focus:outline-none">
+        <span class="material-symbols-outlined text-2xl">menu</span>
+      </button>
+    </div>
+  </div>
+
+  <div id="mobile-menu" class="hidden md:hidden border-t border-outline-variant bg-white px-6 py-4 flex flex-col gap-3 shadow-md">
+    <a href="index.html" class="text-xs font-bold uppercase tracking-widest text-primary py-1">Inicio</a>
+    <a href="#tienda" class="text-xs font-semibold uppercase tracking-widest text-on-surface-variant py-1">Tienda</a>
+    <a href="portafolio.html" class="text-xs font-semibold uppercase tracking-widest text-on-surface-variant py-1">Portafolio</a>
+    <a href="contacto.html" class="text-xs font-semibold uppercase tracking-widest text-on-surface-variant py-1">Contacto</a>
+  </div>
+</header>
+
+<main class="flex-grow" style="padding-top: var(--header-height);">
+
+  <!-- ============ 01. HERO ============ -->
+  <section class="min-h-[480px] flex items-center justify-center relative bg-background border-b border-outline-variant px-6 md:px-16 lg:px-24 py-16">
+    <div class="max-w-4xl mx-auto text-center flex flex-col items-center">
+      <h1 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-primary leading-[1.15] mb-5">
+        Piezas hechas a mano,<br class="hidden sm:inline"> artes visuales y diseño
+      </h1>
+      <p class="font-body text-sm sm:text-base text-on-surface-variant max-w-2xl mx-auto mb-8 leading-relaxed">
+        Un espacio donde conviven arte, gráfica, objetos y procesos manuales. Descubre creaciones únicas diseñadas con pasión y precisión.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 items-center justify-center w-full sm:w-auto">
+        <a href="#tienda" class="w-full sm:w-auto bg-primary text-on-primary hover:bg-neutral-800 transition-all rounded-full px-8 py-3.5 font-body text-xs tracking-widest uppercase font-semibold text-center shadow-sm hover:shadow">Ver tienda</a>
+        <a href="portafolio.html" class="w-full sm:w-auto border border-primary text-primary hover:bg-neutral-100 transition-all rounded-full px-8 py-3.5 font-body text-xs tracking-widest uppercase font-semibold text-center">Ver portafolio</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 02. DESTACADOS ============ -->
+  <section id="tienda" class="px-6 md:px-16 lg:px-24 py-16 max-w-[1920px] mx-auto">
+    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-10 border-b border-outline-variant pb-4">
+      <div>
+        <h2 class="font-heading text-2xl sm:text-3xl font-bold text-primary tracking-tight">Destacados</h2>
+        <p class="font-body text-sm text-on-surface-variant mt-1">Una selección de piezas disponibles en ielou.studio.</p>
+      </div>
+      <a href="portafolio.html" class="font-body text-xs tracking-widest uppercase font-semibold text-primary hover:text-neutral-600 transition-colors mt-4 sm:mt-0 flex items-center gap-1.5 group">
+        Ver toda la tienda
+        <span class="material-symbols-outlined text-base group-hover:translate-x-1 transition-transform">arrow_forward</span>
+      </a>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <!-- Vasija Orgánica -->
+      <article class="flex flex-col group">
+        <div class="relative overflow-hidden bg-neutral-100 aspect-square mb-4 flex items-center justify-center">
+          <img alt="Vasija Orgánica" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" src="img/productos/vasija-organica.jpg">
+          <span class="absolute top-3 left-3 bg-accent text-primary px-3 py-1 rounded-full font-body text-[10px] font-semibold tracking-wider uppercase border border-black/10">Cerámica</span>
+        </div>
+        <h3 class="font-heading font-semibold text-base text-primary mb-1">Vasija Orgánica</h3>
+        <p class="font-body text-xs text-on-surface-variant line-clamp-2 mb-2">Pieza única modelada a mano con acabados naturales y texturas orgánicas...</p>
+        <p class="font-heading font-bold text-sm text-primary mb-3">$45.000</p>
+        <div><a href="producto.html" class="inline-block bg-primary text-on-primary hover:bg-accent hover:text-primary transition-colors rounded-full px-5 py-2 font-body text-[11px] font-semibold tracking-wider uppercase">Comprar</a></div>
+      </article>
+      <!-- Composición Visual 01 -->
+      <article class="flex flex-col group">
+        <div class="relative overflow-hidden bg-neutral-100 aspect-square mb-4 flex items-center justify-center">
+          <img alt="Composición Visual 01" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" src="img/productos/composicion-visual-01.jpg">
+          <span class="absolute top-3 left-3 bg-accent text-primary px-3 py-1 rounded-full font-body text-[10px] font-semibold tracking-wider uppercase border border-black/10">Print</span>
+        </div>
+        <h3 class="font-heading font-semibold text-base text-primary mb-1">Composición Visual 01</h3>
+        <p class="font-body text-xs text-on-surface-variant line-clamp-2 mb-2">Lámina de arte generativo con contrastes geométricos y acentos vibrantes...</p>
+        <p class="font-heading font-bold text-sm text-primary mb-3">$25.000</p>
+        <div><a href="producto.html" class="inline-block bg-primary text-on-primary hover:bg-accent hover:text-primary transition-colors rounded-full px-5 py-2 font-body text-[11px] font-semibold tracking-wider uppercase">Comprar</a></div>
+      </article>
+      <!-- Set Timbres Botánicos -->
+      <article class="flex flex-col group">
+        <div class="relative overflow-hidden bg-neutral-100 aspect-square mb-4 flex items-center justify-center">
+          <img alt="Set Timbres Botánicos" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" src="img/productos/set-timbres-botanicos.jpg">
+          <span class="absolute top-3 left-3 bg-accent text-primary px-3 py-1 rounded-full font-body text-[10px] font-semibold tracking-wider uppercase border border-black/10">Timbre</span>
+        </div>
+        <h3 class="font-heading font-semibold text-base text-primary mb-1">Set Timbres Botánicos</h3>
+        <p class="font-body text-xs text-on-surface-variant line-clamp-2 mb-2">Colección de sellos tallados para estampar motivos naturales en papel...</p>
+        <p class="font-heading font-bold text-sm text-primary mb-3">$18.000</p>
+        <div><a href="producto.html" class="inline-block bg-primary text-on-primary hover:bg-accent hover:text-primary transition-colors rounded-full px-5 py-2 font-body text-[11px] font-semibold tracking-wider uppercase">Comprar</a></div>
+      </article>
+      <!-- Estudio en Rojo -->
+      <article class="flex flex-col group">
+        <div class="relative overflow-hidden bg-neutral-100 aspect-square mb-4 flex items-center justify-center">
+          <img alt="Estudio en Rojo" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" src="img/productos/estudio-en-rojo.jpg">
+          <span class="absolute top-3 left-3 bg-accent text-primary px-3 py-1 rounded-full font-body text-[10px] font-semibold tracking-wider uppercase border border-black/10">Pintura</span>
+        </div>
+        <h3 class="font-heading font-semibold text-base text-primary mb-1">Estudio en Rojo</h3>
+        <p class="font-body text-xs text-on-surface-variant line-clamp-2 mb-2">Obra original en acrílico sobre lienzo con trazos expresivos y minimalistas...</p>
+        <p class="font-heading font-bold text-sm text-primary mb-3">$120.000</p>
+        <div><a href="producto.html" class="inline-block bg-primary text-on-primary hover:bg-accent hover:text-primary transition-colors rounded-full px-5 py-2 font-body text-[11px] font-semibold tracking-wider uppercase">Comprar</a></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ 03. CATEGORÍAS ============ -->
+  <section class="bg-white border-y border-outline-variant px-6 md:px-16 lg:px-24 py-16 max-w-[1920px] mx-auto">
+    <div class="text-center mb-10">
+      <span class="font-body text-xs tracking-widest uppercase font-semibold text-on-surface-variant block mb-2">Categorías</span>
+      <h2 class="font-heading text-2xl sm:text-3xl font-bold text-primary tracking-tight">¿Qué andas buscando?</h2>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <a href="#tienda" class="group bg-background p-8 border border-outline-variant hover:border-primary transition-all duration-300 flex flex-col items-center text-center shadow-sm hover:shadow">
+        <div class="w-14 h-14 rounded-full bg-white group-hover:bg-accent/40 flex items-center justify-center mb-5 transition-colors">
+          <span class="material-symbols-outlined text-2xl text-primary">palette</span>
+        </div>
+        <h3 class="font-heading font-bold text-sm tracking-wider uppercase mb-1 text-primary">Pinturas</h3>
+        <p class="font-body text-xs text-on-surface-variant">Obras originales</p>
+        <span class="mt-4 text-[11px] font-body font-semibold uppercase tracking-wider text-primary opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1">Explorar <span class="material-symbols-outlined text-xs">arrow_forward</span></span>
+      </a>
+      <a href="#tienda" class="group bg-background p-8 border border-outline-variant hover:border-primary transition-all duration-300 flex flex-col items-center text-center shadow-sm hover:shadow">
+        <div class="w-14 h-14 rounded-full bg-white group-hover:bg-accent/40 flex items-center justify-center mb-5 transition-colors">
+          <span class="material-symbols-outlined text-2xl text-primary">image</span>
+        </div>
+        <h3 class="font-heading font-bold text-sm tracking-wider uppercase mb-1 text-primary">Prints</h3>
+        <p class="font-body text-xs text-on-surface-variant">Obra gráfica y ediciones</p>
+        <span class="mt-4 text-[11px] font-body font-semibold uppercase tracking-wider text-primary opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1">Explorar <span class="material-symbols-outlined text-xs">arrow_forward</span></span>
+      </a>
+      <a href="#tienda" class="group bg-background p-8 border border-outline-variant hover:border-primary transition-all duration-300 flex flex-col items-center text-center shadow-sm hover:shadow">
+        <div class="w-14 h-14 rounded-full bg-white group-hover:bg-accent/40 flex items-center justify-center mb-5 transition-colors">
+          <span class="material-symbols-outlined text-2xl text-primary">approval</span>
+        </div>
+        <h3 class="font-heading font-bold text-sm tracking-wider uppercase mb-1 text-primary">Timbres</h3>
+        <p class="font-body text-xs text-on-surface-variant">Diseñados y tallados a mano</p>
+        <span class="mt-4 text-[11px] font-body font-semibold uppercase tracking-wider text-primary opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1">Explorar <span class="material-symbols-outlined text-xs">arrow_forward</span></span>
+      </a>
+      <a href="#tienda" class="group bg-background p-8 border border-outline-variant hover:border-primary transition-all duration-300 flex flex-col items-center text-center shadow-sm hover:shadow">
+        <div class="w-14 h-14 rounded-full bg-white group-hover:bg-accent/40 flex items-center justify-center mb-5 transition-colors">
+          <span class="material-symbols-outlined text-2xl text-primary">category</span>
+        </div>
+        <h3 class="font-heading font-bold text-sm tracking-wider uppercase mb-1 text-primary">Objetos</h3>
+        <p class="font-body text-xs text-on-surface-variant">Pequeñas series en cerámica</p>
+        <span class="mt-4 text-[11px] font-body font-semibold uppercase tracking-wider text-primary opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1">Explorar <span class="material-symbols-outlined text-xs">arrow_forward</span></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============ 04. HECHO A MANO ============ -->
+  <section class="relative min-h-[390px] w-full flex items-center justify-center overflow-hidden py-16 px-4">
+    <div class="absolute inset-0 bg-cover bg-center w-full h-full grayscale" style="background-image: url('img/home/handmade-banner.jpg');"></div>
+    <div class="absolute inset-0 bg-black/45"></div>
+    <div class="relative z-10 text-center px-6 max-w-2xl bg-white/95 backdrop-blur-sm p-8 sm:p-10 shadow-xl border border-outline-variant mx-4">
+      <h2 class="font-heading text-2xl sm:text-3xl font-bold mb-3 text-primary tracking-tight">Arte y Diseño hecho a mano</h2>
+      <p class="font-body text-xs sm:text-sm text-on-surface-variant mb-6 leading-relaxed">
+        Muchas de las piezas de ielou.studio nacen de procesos manuales como el grabado, la impresión, la pintura y la experimentación con materiales. Las pequeñas diferencias entre una pieza y otra son parte de su proceso y enriquecen su carácter en un mundo lleno de IA.
+      </p>
+      <a href="contacto.html" class="inline-flex items-center gap-2 bg-primary text-on-primary hover:bg-accent hover:text-primary transition-all rounded-full px-7 py-3 font-body text-xs tracking-widest uppercase font-semibold">
+        Conoce ielou.studio <span class="material-symbols-outlined text-sm">arrow_forward</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============ 05. PORTAFOLIO / ARTES VISUALES ============ -->
+  <section class="px-6 md:px-16 lg:px-24 py-20 max-w-[1920px] mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+      <div class="lg:col-span-5 flex flex-col justify-center">
+        <span class="font-body text-xs tracking-widest uppercase font-semibold text-on-surface-variant mb-3">Portafolio / artes visuales</span>
+        <h2 class="font-heading text-2xl sm:text-3xl lg:text-4xl font-bold text-primary tracking-tight mb-4 leading-tight">Obra y exploraciones visuales</h2>
+        <p class="font-body text-sm sm:text-base text-on-surface-variant mb-7 leading-relaxed">Pintura, grabado, serigrafía y procesos gráficos que cambian de lenguaje según cada investigación.</p>
+        <div><a href="portafolio.html" class="inline-flex items-center gap-2 bg-primary text-on-primary hover:bg-neutral-800 transition-colors rounded-full px-8 py-3.5 font-body text-xs tracking-widest uppercase font-semibold">Explorar portafolio <span class="material-symbols-outlined text-sm">arrow_forward</span></a></div>
+      </div>
+      <div class="lg:col-span-7">
+        <a href="proyecto.html" class="relative block bg-neutral-100 border border-outline-variant overflow-hidden shadow-sm aspect-[4/3] group">
+          <img alt="Exploración visual contemporánea" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="img/proyecto/resonancia-estatica-2.jpg">
+          <div class="absolute bottom-4 left-4 bg-white/90 backdrop-blur-md px-4 py-2 border border-black/10 text-[11px] font-body tracking-wider uppercase text-primary font-semibold">Serie Experimental 2024</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 06. INFORMACIÓN ÚTIL ============ -->
+  <section class="border-t border-outline-variant bg-white px-6 md:px-16 lg:px-24 py-16 max-w-[1920px] mx-auto">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div class="flex flex-col group">
+        <div class="relative w-12 h-12 mb-4 flex items-center justify-center">
+          <span class="absolute -inset-1 bg-accent/50 rounded-full group-hover:scale-110 transition-transform"></span>
+          <span class="material-symbols-outlined text-primary text-2xl relative z-10">local_shipping</span>
+        </div>
+        <h4 class="font-heading font-bold text-sm uppercase tracking-wider text-primary mb-1.5">Envíos a todo Chile</h4>
+        <p class="font-body text-xs text-on-surface-variant leading-relaxed">Despachos a Santiago y regiones con cobro por retiro.</p>
+      </div>
+      <div class="flex flex-col group">
+        <div class="relative w-12 h-12 mb-4 flex items-center justify-center">
+          <span class="absolute -inset-1 bg-accent/50 rounded-full group-hover:scale-110 transition-transform"></span>
+          <span class="material-symbols-outlined text-primary text-2xl relative z-10">front_hand</span>
+        </div>
+        <h4 class="font-heading font-bold text-sm uppercase tracking-wider text-primary mb-1.5">Hecho a mano</h4>
+        <p class="font-body text-xs text-on-surface-variant leading-relaxed">Piezas únicas a ritmo manual con dedicación meticulosa.</p>
+      </div>
+      <div class="flex flex-col group">
+        <div class="relative w-12 h-12 mb-4 flex items-center justify-center">
+          <span class="absolute -inset-1 bg-accent/50 rounded-full group-hover:scale-110 transition-transform"></span>
+          <span class="material-symbols-outlined text-primary text-2xl relative z-10">lock</span>
+        </div>
+        <h4 class="font-heading font-bold text-sm uppercase tracking-wider text-primary mb-1.5">Compra segura</h4>
+        <p class="font-body text-xs text-on-surface-variant leading-relaxed">Pago online mediante plataformas protegidas y encriptadas.</p>
+      </div>
+      <div class="flex flex-col group">
+        <div class="relative w-12 h-12 mb-4 flex items-center justify-center">
+          <span class="absolute -inset-1 bg-accent/50 rounded-full group-hover:scale-110 transition-transform"></span>
+          <span class="material-symbols-outlined text-primary text-2xl relative z-10">help_outline</span>
+        </div>
+        <h4 class="font-heading font-bold text-sm uppercase tracking-wider text-primary mb-1.5">¿Necesitas ayuda?</h4>
+        <p class="font-body text-xs text-on-surface-variant leading-relaxed">Revisa <a href="#preguntas-frecuentes" class="text-primary underline font-semibold hover:text-accent-dark transition-colors">Preguntas Frecuentes</a> o escríbeme si tienes dudas sobre una pieza o tu compra.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 07. PREGUNTAS FRECUENTES ============ -->
+  <section id="preguntas-frecuentes" class="px-6 md:px-16 lg:px-24 py-20 max-w-[1920px] mx-auto border-t border-outline-variant">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-10">
+        <h2 class="font-heading text-2xl sm:text-3xl font-bold text-primary tracking-tight">Preguntas frecuentes</h2>
+        <p class="font-body text-sm text-on-surface-variant mt-2">Todo lo que necesitas saber sobre el proceso de compra y cuidado de las piezas.</p>
+      </div>
+      <div class="space-y-4">
+        <details class="group border border-outline-variant bg-white p-5 transition-all" open="">
+          <summary class="flex justify-between items-center cursor-pointer list-none select-none font-heading font-semibold text-sm sm:text-base text-primary">
+            <span>¿Hacen envíos fuera de Chile?</span>
+            <span class="material-symbols-outlined text-xl transition-transform duration-300 group-open:rotate-180">expand_more</span>
+          </summary>
+          <div class="mt-3 text-xs sm:text-sm font-body text-on-surface-variant leading-relaxed border-t border-outline-variant/60 pt-3">
+            Actualmente los despachos directos de la web están habilitados para todo Chile continental. Si te encuentras en el extranjero y deseas adquirir una obra o print, escríbenos directamente a través de la sección de contacto para cotizar despacho internacional vía DHL o Fedex.
+          </div>
+        </details>
+        <details class="group border border-outline-variant bg-white p-5 transition-all">
+          <summary class="flex justify-between items-center cursor-pointer list-none select-none font-heading font-semibold text-sm sm:text-base text-primary">
+            <span>¿Las piezas de cerámica y pintura son únicas?</span>
+            <span class="material-symbols-outlined text-xl transition-transform duration-300 group-open:rotate-180">expand_more</span>
+          </summary>
+          <div class="mt-3 text-xs sm:text-sm font-body text-on-surface-variant leading-relaxed border-t border-outline-variant/60 pt-3">
+            Sí, cada pintura original y pieza escultórica en cerámica es una creación exclusiva e irrepetible. Cada una se entrega con certificado o firma de autenticidad del estudio.
+          </div>
+        </details>
+        <details class="group border border-outline-variant bg-white p-5 transition-all">
+          <summary class="flex justify-between items-center cursor-pointer list-none select-none font-heading font-semibold text-sm sm:text-base text-primary">
+            <span>¿Cómo cuidar los timbres y grabados?</span>
+            <span class="material-symbols-outlined text-xl transition-transform duration-300 group-open:rotate-180">expand_more</span>
+          </summary>
+          <div class="mt-3 text-xs sm:text-sm font-body text-on-surface-variant leading-relaxed border-t border-outline-variant/60 pt-3">
+            Para los timbres, límpialos suavemente con un paño húmedo tras cada uso sin sumergirlos en agua. Para los grabados y prints en papel de algodón, sugerimos enmarcado con paspartú y vidrio libre de ácido con protección ultravioleta.
+          </div>
+        </details>
+        <details class="group border border-outline-variant bg-white p-5 transition-all">
+          <summary class="flex justify-between items-center cursor-pointer list-none select-none font-heading font-semibold text-sm sm:text-base text-primary">
+            <span>¿Cuál es el tiempo de preparación de un pedido?</span>
+            <span class="material-symbols-outlined text-xl transition-transform duration-300 group-open:rotate-180">expand_more</span>
+          </summary>
+          <div class="mt-3 text-xs sm:text-sm font-body text-on-surface-variant leading-relaxed border-t border-outline-variant/60 pt-3">
+            Las piezas en stock se embalan cuidadosamente y se despachan entre 2 a 4 días hábiles. En caso de piezas personalizadas o por encargo, el plazo estimado se acuerda individualmente según el proceso de curado y secado.
+          </div>
+        </details>
+      </div>
+      <div class="text-center mt-8">
+        <a href="contacto.html" class="inline-flex items-center gap-1 font-body text-xs tracking-widest uppercase font-semibold text-primary hover:text-neutral-600 transition-colors">Leer más en Contacto <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 08. NEWSLETTER ============ -->
+  <section class="bg-primary text-white px-6 md:px-16 lg:px-24 py-16 max-w-[1920px] mx-auto">
+    <div class="max-w-2xl mx-auto text-center">
+      <h2 class="font-heading text-2xl sm:text-3xl font-bold tracking-tight mb-2.5">Cosas novedosas pasan por aquí</h2>
+      <p class="font-body text-xs sm:text-sm text-neutral-400 mb-8">Inscríbete para nuevas piezas, lanzamientos, ferias y procesos desde ielou.studio.</p>
+      <form class="flex flex-col sm:flex-row gap-3 justify-center max-w-md mx-auto" onsubmit="event.preventDefault();">
+        <input class="bg-neutral-900 border border-neutral-700 rounded-full px-5 py-3 text-xs sm:text-sm text-white placeholder:text-neutral-500 focus:outline-none focus:border-accent flex-grow transition-colors" placeholder="tu@email.com" required="" type="email">
+        <button class="bg-accent text-primary hover:bg-accent-dark transition-colors rounded-full px-6 py-3 font-body text-xs tracking-wider uppercase font-bold whitespace-nowrap shadow-sm" type="submit">Quiero enterarme</button>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer id="contacto" class="bg-white border-t border-outline-variant text-primary w-full">
+  <div class="px-6 md:px-16 lg:px-24 py-16 max-w-[1920px] mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
+      <div class="lg:col-span-2 flex flex-col">
+        <span class="font-heading text-xl font-bold lowercase tracking-tight mb-2">ielou.studio by carola sandoval</span>
+        <p class="font-body text-xs text-on-surface-variant max-w-sm mb-2 leading-relaxed">Estudio creativo de artes visuales y diseño gráfico, by Carola Sandoval.</p>
+        <p class="font-body text-xs text-on-surface-variant mb-6">Santiago de Chile</p>
+        <div class="flex items-center gap-3">
+          <a aria-label="Instagram" href="https://instagram.com/ielou.studio" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-neutral-100 hover:bg-accent transition-colors flex items-center justify-center text-primary">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a aria-label="Facebook" href="#" class="w-9 h-9 rounded-full bg-neutral-100 hover:bg-accent transition-colors flex items-center justify-center text-primary">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a aria-label="LinkedIn" href="https://www.linkedin.com/in/carola-sandoval-a9076110b" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-neutral-100 hover:bg-accent transition-colors flex items-center justify-center text-primary">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          </a>
+          <a aria-label="Behance" href="https://www.behance.net/carolasandoval" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-neutral-100 hover:bg-accent transition-colors flex items-center justify-center text-primary">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-4.726 3-3.044 0-5.5-2.456-5.5-5.5 0-3.045 2.456-5.5 5.5-5.5 3.045 0 5.274 2.455 5.274 5.5v1h-8.274c.245 1.762 1.745 2.5 3 2.5 1.218 0 2.052-.772 2.441-1.5h2.285zm-7.726-3.5h5.727c-.24-1.428-1.516-2-2.727-2-1.341 0-2.559.84-2.854 2-.146.6-.146 0-.146 0zm-10-8.5h-6v14h6c3.313 0 6-2.687 6-6 0-1.85-1.15-3.5-2.5-4.5 1.05-.75 2.5-2.05 2.5-3.5 0-3.313-2.687-6-6-6zm-3.5 5h3.5c1.378 0 2.5 1.122 2.5 2.5s-1.122 2.5-2.5 2.5h-3.5v-5zm0 7h3.5c1.378 0 2.5 1.122 2.5 2.5s-1.122 2.5-2.5 2.5h-3.5v-5z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="flex flex-col">
+        <span class="font-body text-xs tracking-widest uppercase font-bold text-primary mb-4">Tienda</span>
+        <ul class="space-y-2.5 text-xs text-on-surface-variant font-body">
+          <li><a href="#tienda" class="hover:text-primary transition-colors">Ver todo</a></li>
+          <li><a href="#tienda" class="hover:text-primary transition-colors">Pinturas</a></li>
+          <li><a href="#tienda" class="hover:text-primary transition-colors">Prints</a></li>
+          <li><a href="#tienda" class="hover:text-primary transition-colors">Timbres</a></li>
+          <li><a href="#tienda" class="hover:text-primary transition-colors">Objetos</a></li>
+        </ul>
+      </div>
+      <div class="flex flex-col">
+        <span class="font-body text-xs tracking-widest uppercase font-bold text-primary mb-4">Explorar</span>
+        <ul class="space-y-2.5 text-xs text-on-surface-variant font-body">
+          <li><a href="portafolio.html" class="hover:text-primary transition-colors">Portafolio</a></li>
+          <li><a href="contacto.html" class="hover:text-primary transition-colors">ielou.studio</a></li>
+        </ul>
+      </div>
+      <div class="flex flex-col">
+        <span class="font-body text-xs tracking-widest uppercase font-bold text-primary mb-4">Ayuda</span>
+        <ul class="space-y-2.5 text-xs text-on-surface-variant font-body">
+          <li><a href="contacto.html" class="hover:text-primary transition-colors">Contacto</a></li>
+          <li><a href="#" class="hover:text-primary transition-colors">Cambios y devoluciones</a></li>
+          <li><a href="#preguntas-frecuentes" class="hover:text-primary transition-colors">Preguntas frecuentes</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-outline-variant mt-12 pt-6 flex flex-col sm:flex-row justify-between items-center text-xs text-on-surface-variant gap-4">
+      <p>© 2026 ielou.studio · Chile</p>
+      <div class="flex gap-6">
+        <a href="#" class="hover:text-primary transition-colors">Términos y condiciones</a>
+        <a href="#" class="hover:text-primary transition-colors">Política de privacidad</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

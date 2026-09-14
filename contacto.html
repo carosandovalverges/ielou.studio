@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contacto — ielou.studio</title>
+<meta name="description" content="Escríbenos para comisiones, colaboraciones o dudas sobre una pieza.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          primary: "#000000",
+          "on-primary": "#ffffff",
+          background: "#f9f9f9",
+          surface: "#ffffff",
+          "on-surface": "#1b1b1b",
+          "on-surface-variant": "#57534e",
+          "outline-variant": "#e5e5e5",
+          accent: "#ffe16d",
+          "accent-dark": "#e9c400"
+        },
+        fontFamily: {
+          heading: ["Montserrat", "sans-serif"],
+          body: ["Inter", "sans-serif"]
+        }
+      }
+    }
+  };
+</script>
+<link rel="stylesheet" href="css/tokens.css">
+</head>
+<body class="bg-background text-on-surface font-body min-h-screen flex flex-col antialiased selection:bg-accent selection:text-black">
+
+<!-- ============ HEADER ============ -->
+<header class="bg-white/90 backdrop-blur-md fixed top-0 w-full z-50 border-b border-outline-variant transition-all">
+  <div class="px-6 md:px-16 lg:px-24 py-5 flex justify-between items-center w-full max-w-[1920px] mx-auto">
+    <a href="index.html" class="font-heading text-2xl font-bold tracking-tight text-primary lowercase hover:opacity-80 transition-opacity">ielou.studio</a>
+    <nav class="hidden md:flex gap-8 items-center">
+      <a href="index.html" class="text-xs tracking-widest uppercase font-semibold font-body text-on-surface-variant hover:text-primary transition-colors">Inicio</a>
+      <div class="relative group py-2">
+        <button type="button" class="text-xs tracking-widest uppercase font-semibold font-body text-on-surface-variant group-hover:text-primary transition-colors flex items-center gap-1">
+          Tienda
+          <span class="material-symbols-outlined text-base transition-transform group-hover:rotate-180">expand_more</span>
+        </button>
+        <div class="absolute left-0 top-full hidden group-hover:flex flex-col bg-white border border-outline-variant shadow-xl py-3 w-48 z-50 transition-all">
+          <a href="index.html#tienda" class="px-5 py-2 text-xs font-semibold uppercase tracking-wider text-on-surface hover:bg-accent/30 hover:text-primary transition-colors">Ver todo</a>
+          <a href="index.html#tienda" class="px-5 py-2 text-xs uppercase tracking-wider text-on-surface-variant hover:bg-accent/30 hover:text-primary transition-colors">Pinturas</a>
+          <a href="index.html#tienda" class="px-5 py-2 text-xs uppercase tracking-wider text-on-surface-variant hover:bg-accent/30 hover:text-primary transition-colors">Prints</a>
+          <a href="index.html#tienda" class="px-5 py-2 text-xs uppercase tracking-wider text-on-surface-variant hover:bg-accent/30 hover:text-primary transition-colors">Timbres</a>
+          <a href="index.html#tienda" class="px-5 py-2 text-xs uppercase tracking-wider text-on-surface-variant hover:bg-accent/30 hover:text-primary transition-colors">Objetos</a>
+        </div>
+      </div>
+      <a href="portafolio.html" class="text-xs tracking-widest uppercase font-semibold font-body text-on-surface-variant hover:text-primary transition-colors">Portafolio</a>
+      <a href="contacto.html" class="text-xs tracking-widest uppercase font-semibold font-body text-primary border-b-2 border-primary pb-0.5 transition-colors">Contacto</a>
+    </nav>
+    <div class="flex items-center gap-4">
+      <a href="index.html#tienda" aria-label="Bolsa de compra" class="relative p-1 hover:opacity-75 transition-opacity text-primary flex items-center justify-center">
+        <span class="material-symbols-outlined text-[26px]">shopping_bag</span>
+        <span class="absolute -top-1 -right-1 w-4 h-4 bg-accent text-primary text-[10px] font-bold rounded-full flex items-center justify-center border border-black/10 leading-none">0</span>
+      </a>
+      <button id="mobile-menu-btn" aria-label="Abrir menú" aria-expanded="false" class="md:hidden p-1 text-primary focus:outline-none">
+        <span class="material-symbols-outlined text-2xl">menu</span>
+      </button>
+    </div>
+  </div>
+  <div id="mobile-menu" class="hidden md:hidden border-t border-outline-variant bg-white px-6 py-4 flex flex-col gap-3 shadow-md">
+    <a href="index.html" class="text-xs font-semibold uppercase tracking-widest text-on-surface-variant py-1">Inicio</a>
+    <a href="index.html#tienda" class="text-xs font-semibold uppercase tracking-widest text-on-surface-variant py-1">Tienda</a>
+    <a href="portafolio.html" class="text-xs font-semibold uppercase tracking-widest text-on-surface-variant py-1">Portafolio</a>
+    <a href="contacto.html" class="text-xs font-bold uppercase tracking-widest text-primary py-1">Contacto</a>
+  </div>
+</header>
+
+<main class="flex-grow" style="padding-top: var(--header-height);">
+
+  <!-- ============ PRESENTACIÓN DEL ESTUDIO ============ -->
+  <section class="px-6 md:px-16 lg:px-24 py-16 md:py-24 grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-14 items-center max-w-[1920px] mx-auto">
+    <div class="md:col-span-6 space-y-6">
+      <h1 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-primary lowercase">ielou.studio</h1>
+      <p class="font-body text-base sm:text-lg text-on-surface-variant max-w-2xl leading-relaxed">
+        ielou.studio es el espacio creativo de Carola Sandoval, dedicado a piezas hechas a mano, artes visuales y diseño gráfico. Cada obra nace de procesos manuales —pintura, grabado, cerámica y estampado— trabajados con dedicación meticulosa y un lenguaje minimalista.
+      </p>
+    </div>
+    <div class="md:col-span-6 relative aspect-square overflow-hidden">
+      <img class="object-cover w-full h-full" alt="Espacio de trabajo del estudio ielou.studio" src="img/contacto/estudio-workspace.jpg">
+    </div>
+  </section>
+
+  <!-- ============ CONTACTO ============ -->
+  <section class="px-6 md:px-16 lg:px-24 py-16 md:py-24 bg-white border-y border-outline-variant grid grid-cols-1 md:grid-cols-12 gap-10 max-w-[1920px] mx-auto">
+    <div class="md:col-span-5 space-y-6">
+      <h2 class="font-heading text-2xl sm:text-3xl font-bold text-primary tracking-tight">Contacto</h2>
+      <p class="font-body text-sm sm:text-base text-on-surface-variant leading-relaxed">
+        Estamos abiertas a comisiones, colaboraciones y conversaciones. Escríbenos para contarnos sobre tu proyecto o para consultar por una pieza disponible.
+      </p>
+      <div class="space-y-2 pt-2">
+        <p class="font-body text-sm text-primary font-bold">Email: <span class="font-normal text-on-surface-variant">hola@ielou.studio</span></p>
+        <p class="font-body text-sm text-primary font-bold">Ubicación: <span class="font-normal text-on-surface-variant">Santiago de Chile</span></p>
+      </div>
+    </div>
+    <div class="md:col-span-7 md:pl-12">
+      <!--
+        Nota para el developer: este formulario usa mailto: como fallback estático.
+        En WordPress, reemplazar por el widget de formulario nativo de Elementor Pro
+        o por el plugin gratuito WPForms (ver README.md).
+      -->
+      <form class="space-y-6" action="mailto:hola@ielou.studio" method="get" enctype="text/plain">
+        <div>
+          <input class="w-full bg-transparent border-0 border-b border-outline-variant text-primary placeholder-on-surface-variant focus:border-accent focus:ring-0 px-0 py-2 font-body text-sm transition-colors" id="name" name="name" placeholder="Nombre" type="text" required>
+        </div>
+        <div>
+          <input class="w-full bg-transparent border-0 border-b border-outline-variant text-primary placeholder-on-surface-variant focus:border-accent focus:ring-0 px-0 py-2 font-body text-sm transition-colors" id="email" name="email" placeholder="Email" type="email" required>
+        </div>
+        <div>
+          <textarea class="w-full bg-transparent border-0 border-b border-outline-variant text-primary placeholder-on-surface-variant focus:border-accent focus:ring-0 px-0 py-2 font-body text-sm transition-colors resize-none" id="message" name="message" placeholder="Mensaje" rows="4" required></textarea>
+        </div>
+        <div class="pt-2">
+          <button class="bg-primary text-on-primary rounded-full px-8 py-3 font-body text-xs tracking-widest uppercase font-semibold hover:bg-accent hover:text-primary transition-colors duration-300" type="submit">Enviar mensaje</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============ ¿DUDAS? ============ -->
+  <section class="px-6 md:px-16 lg:px-24 py-16 max-w-3xl mx-auto text-center">
+    <h2 class="font-heading text-xl sm:text-2xl font-bold text-primary tracking-tight mb-3">¿Tienes dudas sobre compras o envíos?</h2>
+    <p class="font-body text-sm text-on-surface-variant mb-6 leading-relaxed">Revisa las preguntas frecuentes sobre el proceso de compra, envíos y cuidado de las piezas.</p>
+    <a href="index.html#preguntas-frecuentes" class="inline-flex items-center gap-1.5 font-body text-xs tracking-widest uppercase font-semibold text-primary hover:text-neutral-600 transition-colors">
+      Ver preguntas frecuentes
+      <span class="material-symbols-outlined text-base">arrow_forward</span>
+    </a>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer id="contacto" class="bg-white border-t border-outline-variant text-primary w-full">
+  <div class="px-6 md:px-16 lg:px-24 py-16 max-w-[1920px] mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
+      <div class="lg:col-span-2 flex flex-col">
+        <span class="font-heading text-xl font-bold lowercase tracking-tight mb-2">ielou.studio by carola sandoval</span>
+        <p class="font-body text-xs text-on-surface-variant max-w-sm mb-2 leading-relaxed">Estudio creativo de artes visuales y diseño gráfico, by Carola Sandoval.</p>
+        <p class="font-body text-xs text-on-surface-variant mb-6">Santiago de Chile</p>
+        <div class="flex items-center gap-3">
+          <a aria-label="Instagram" href="https://instagram.com/ielou.studio" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-neutral-100 hover:bg-accent transition-colors flex items-center justify-center text-primary">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a aria-label="Facebook" href="#" class="w-9 h-9 rounded-full bg-neutral-100 hover:bg-accent transition-colors flex items-center justify-center text-primary">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a aria-label="LinkedIn" href="https://www.linkedin.com/in/carola-sandoval-a9076110b" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-neutral-100 hover:bg-accent transition-colors flex items-center justify-center text-primary">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          </a>
+          <a aria-label="Behance" href="https://www.behance.net/carolasandoval" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-neutral-100 hover:bg-accent transition-colors flex items-center justify-center text-primary">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-4.726 3-3.044 0-5.5-2.456-5.5-5.5 0-3.045 2.456-5.5 5.5-5.5 3.045 0 5.274 2.455 5.274 5.5v1h-8.274c.245 1.762 1.745 2.5 3 2.5 1.218 0 2.052-.772 2.441-1.5h2.285zm-7.726-3.5h5.727c-.24-1.428-1.516-2-2.727-2-1.341 0-2.559.84-2.854 2-.146.6-.146 0-.146 0zm-10-8.5h-6v14h6c3.313 0 6-2.687 6-6 0-1.85-1.15-3.5-2.5-4.5 1.05-.75 2.5-2.05 2.5-3.5 0-3.313-2.687-6-6-6zm-3.5 5h3.5c1.378 0 2.5 1.122 2.5 2.5s-1.122 2.5-2.5 2.5h-3.5v-5zm0 7h3.5c1.378 0 2.5 1.122 2.5 2.5s-1.122 2.5-2.5 2.5h-3.5v-5z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="flex flex-col">
+        <span class="font-body text-xs tracking-widest uppercase font-bold text-primary mb-4">Tienda</span>
+        <ul class="space-y-2.5 text-xs text-on-surface-variant font-body">
+          <li><a href="index.html#tienda" class="hover:text-primary transition-colors">Ver todo</a></li>
+          <li><a href="index.html#tienda" class="hover:text-primary transition-colors">Pinturas</a></li>
+          <li><a href="index.html#tienda" class="hover:text-primary transition-colors">Prints</a></li>
+          <li><a href="index.html#tienda" class="hover:text-primary transition-colors">Timbres</a></li>
+          <li><a href="index.html#tienda" class="hover:text-primary transition-colors">Objetos</a></li>
+        </ul>
+      </div>
+      <div class="flex flex-col">
+        <span class="font-body text-xs tracking-widest uppercase font-bold text-primary mb-4">Explorar</span>
+        <ul class="space-y-2.5 text-xs text-on-surface-variant font-body">
+          <li><a href="portafolio.html" class="hover:text-primary transition-colors">Portafolio</a></li>
+          <li><a href="contacto.html" class="hover:text-primary transition-colors">ielou.studio</a></li>
+        </ul>
+      </div>
+      <div class="flex flex-col">
+        <span class="font-body text-xs tracking-widest uppercase font-bold text-primary mb-4">Ayuda</span>
+        <ul class="space-y-2.5 text-xs text-on-surface-variant font-body">
+          <li><a href="contacto.html" class="hover:text-primary transition-colors">Contacto</a></li>
+          <li><a href="#" class="hover:text-primary transition-colors">Cambios y devoluciones</a></li>
+          <li><a href="index.html#preguntas-frecuentes" class="hover:text-primary transition-colors">Preguntas frecuentes</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-outline-variant mt-12 pt-6 flex flex-col sm:flex-row justify-between items-center text-xs text-on-surface-variant gap-4">
+      <p>© 2026 ielou.studio · Chile</p>
+      <div class="flex gap-6">
+        <a href="#" class="hover:text-primary transition-colors">Términos y condiciones</a>
+        <a href="#" class="hover:text-primary transition-colors">Política de privacidad</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

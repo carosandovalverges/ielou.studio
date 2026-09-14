@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resonancia Estática — ielou.studio</title>
+<meta name="description" content="Instalación 2024: una exploración táctil de la memoria urbana a través de texturas superpuestas y contrastes lumínicos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          primary: "#000000",
+          "on-primary": "#ffffff",
+          background: "#f9f9f9",
+          surface: "#ffffff",
+          "on-surface": "#1b1b1b",
+          "on-surface-variant": "#57534e",
+          "outline-variant": "#e5e5e5",
+          accent: "#ffe16d",
+          "accent-dark": "#e9c400"
+        },
+        fontFamily: {
+          heading: ["Montserrat", "sans-serif"],
+          body: ["Inter", "sans-serif"]
+        }
+      }
+    }
+  };
+</script>
+<link rel="stylesheet" href="css/tokens.css">
+</head>
+<body class="bg-background text-on-surface font-body min-h-screen flex flex-col antialiased selection:bg-accent selection:text-black">
+
+<!-- ============ HEADER ============ -->
+<header class="bg-white/90 backdrop-blur-md fixed top-0 w-full z-50 border-b border-outline-variant transition-all">
+  <div class="px-6 md:px-16 lg:px-24 py-5 flex justify-between items-center w-full max-w-[1920px] mx-auto">
+    <a href="index.html" class="font-heading text-2xl font-bold tracking-tight text-primary lowercase hover:opacity-80 transition-opacity">ielou.studio</a>
+    <nav class="hidden md:flex gap-8 items-center">
+      <a href="index.html" class="text-xs tracking-widest uppercase font-semibold font-body text-on-surface-variant hover:text-primary transition-colors">Inicio</a>
+      <div class="relative group py-2">
+        <button type="button" class="text-xs tracking-widest uppercase font-semibold font-body text-on-surface-variant group-hover:text-primary transition-colors flex items-center gap-1">
+          Tienda
+          <span class="material-symbols-outlined text-base transition-transform group-hover:rotate-180">expand_more</span>
+        </button>
+        <div class="absolute left-0 top-full hidden group-hover:flex flex-col bg-white border border-outline-variant shadow-xl py-3 w-48 z-50 transition-all">
+          <a href="index.html#tienda" class="px-5 py-2 text-xs font-semibold uppercase tracking-wider text-on-surface hover:bg-accent/30 hover:text-primary transition-colors">Ver todo</a>
+          <a href="index.html#tienda" class="px-5 py-2 text-xs uppercase tracking-wider text-on-surface-variant hover:bg-accent/30 hover:text-primary transition-colors">Pinturas</a>
+          <a href="index.html#tienda" class="px-5 py-2 text-xs uppercase tracking-wider text-on-surface-variant hover:bg-accent/30 hover:text-primary transition-colors">Prints</a>
+          <a href="index.html#tienda" class="px-5 py-2 text-xs uppercase tracking-wider text-on-surface-variant hover:bg-accent/30 hover:text-primary transition-colors">Timbres</a>
+          <a href="index.html#tienda" class="px-5 py-2 text-xs uppercase tracking-wider text-on-surface-variant hover:bg-accent/30 hover:text-primary transition-colors">Objetos</a>
+        </div>
+      </div>
+      <a href="portafolio.html" class="text-xs tracking-widest uppercase font-semibold font-body text-primary border-b-2 border-primary pb-0.5 transition-colors">Portafolio</a>
+      <a href="contacto.html" class="text-xs tracking-widest uppercase font-semibold font-body text-on-surface-variant hover:text-primary transition-colors">Contacto</a>
+    </nav>
+    <div class="flex items-center gap-4">
+      <a href="index.html#tienda" aria-label="Bolsa de compra" class="relative p-1 hover:opacity-75 transition-opacity text-primary flex items-center justify-center">
+        <span class="material-symbols-outlined text-[26px]">shopping_bag</span>
+        <span class="absolute -top-1 -right-1 w-4 h-4 bg-accent text-primary text-[10px] font-bold rounded-full flex items-center justify-center border border-black/10 leading-none">0</span>
+      </a>
+      <button id="mobile-menu-btn" aria-label="Abrir menú" aria-expanded="false" class="md:hidden p-1 text-primary focus:outline-none">
+        <span class="material-symbols-outlined text-2xl">menu</span>
+      </button>
+    </div>
+  </div>
+  <div id="mobile-menu" class="hidden md:hidden border-t border-outline-variant bg-white px-6 py-4 flex flex-col gap-3 shadow-md">
+    <a href="index.html" class="text-xs font-semibold uppercase tracking-widest text-on-surface-variant py-1">Inicio</a>
+    <a href="index.html#tienda" class="text-xs font-semibold uppercase tracking-widest text-on-surface-variant py-1">Tienda</a>
+    <a href="portafolio.html" class="text-xs font-bold uppercase tracking-widest text-primary py-1">Portafolio</a>
+    <a href="contacto.html" class="text-xs font-semibold uppercase tracking-widest text-on-surface-variant py-1">Contacto</a>
+  </div>
+</header>
+
+<main class="flex-grow pb-20" style="padding-top: var(--header-height);">
+
+  <div class="px-6 md:px-16 lg:px-24 max-w-[1920px] mx-auto mb-10">
+    <nav class="mb-8 flex items-center gap-2 font-body text-xs text-on-surface-variant uppercase tracking-widest">
+      <a href="index.html" class="hover:text-primary transition-colors">Inicio</a>
+      <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+      <a href="portafolio.html" class="hover:text-primary transition-colors">Portafolio</a>
+      <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+      <span class="text-primary font-bold">Artes Visuales</span>
+    </nav>
+    <div class="flex flex-col lg:flex-row gap-8 justify-between items-start lg:items-end">
+      <div class="max-w-3xl">
+        <span class="inline-block px-3.5 py-1 rounded-full bg-accent text-primary font-body text-[11px] font-bold tracking-wider uppercase mb-5">Instalación / 2024</span>
+        <h1 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-primary mb-5">Resonancia Estática</h1>
+        <p class="font-body text-base sm:text-lg text-on-surface-variant leading-relaxed max-w-2xl">Una exploración táctil de la memoria urbana a través de texturas superpuestas y contrastes lumínicos. Esta pieza busca detener el tiempo en un espacio de constante flujo, creando un diálogo entre el espectador y la quietud arquitectónica.</p>
+      </div>
+      <div class="flex gap-4 mt-6 lg:mt-0">
+        <a href="contacto.html" class="flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-on-primary hover:bg-accent hover:text-primary transition-all duration-300 font-body text-xs font-bold tracking-widest uppercase shadow-sm">
+          <span class="material-symbols-outlined text-[18px]">mail</span>
+          Consultar
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ CARRUSEL ============ -->
+  <section class="px-6 md:px-16 lg:px-24 max-w-[1920px] mx-auto mb-16 md:mb-20">
+    <div id="carousel-zoom-trigger" class="relative w-full h-[420px] sm:h-[520px] md:h-[70vh] min-h-[420px] max-h-[750px] cursor-zoom-in group overflow-hidden bg-neutral-100 border border-outline-variant">
+      <img id="carousel-main-img" src="img/proyecto/resonancia-estatica-1.jpg" alt="Instalación Resonancia Estática" class="w-full h-full object-cover transition-opacity duration-500 select-none">
+      <button type="button" id="carousel-prev" aria-label="Fotografía anterior" class="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 w-12 h-12 md:w-14 md:h-14 rounded-full bg-white text-primary shadow-xl flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 focus:outline-none z-20">
+        <span class="material-symbols-outlined text-[24px] md:text-[28px]">chevron_left</span>
+      </button>
+      <button type="button" id="carousel-next" aria-label="Fotografía siguiente" class="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 w-12 h-12 md:w-14 md:h-14 rounded-full bg-white text-primary shadow-xl flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 focus:outline-none z-20">
+        <span class="material-symbols-outlined text-[24px] md:text-[28px]">chevron_right</span>
+      </button>
+      <div id="slide-indicator" class="absolute bottom-6 right-6 md:bottom-8 md:right-10 bg-black/75 backdrop-blur-md text-white px-3.5 py-1.5 rounded-full text-xs font-body font-semibold tracking-widest z-20 shadow-md">1 / 4</div>
+    </div>
+    <div class="grid grid-cols-4 gap-3 sm:gap-4 md:gap-6 mt-4 sm:mt-6">
+      <button type="button" class="carousel-thumbnail aspect-square overflow-hidden bg-neutral-100 border-2 border-black focus:outline-none cursor-pointer group transition-all duration-300">
+        <img src="img/proyecto/resonancia-estatica-1.jpg" alt="Miniatura 1 - Vista Principal" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+      </button>
+      <button type="button" class="carousel-thumbnail aspect-square overflow-hidden bg-neutral-100 border-2 border-neutral-200 hover:border-black focus:outline-none cursor-pointer group transition-all duration-300">
+        <img src="img/proyecto/resonancia-estatica-2.jpg" alt="Miniatura 2 - Detalle Material" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+      </button>
+      <button type="button" class="carousel-thumbnail aspect-square overflow-hidden bg-neutral-100 border-2 border-neutral-200 hover:border-black focus:outline-none cursor-pointer group transition-all duration-300">
+        <img src="img/proyecto/resonancia-estatica-3.jpg" alt="Miniatura 3 - Perspectiva Espacial" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+      </button>
+      <button type="button" class="carousel-thumbnail aspect-square overflow-hidden bg-neutral-100 border-2 border-neutral-200 hover:border-black focus:outline-none cursor-pointer group transition-all duration-300">
+        <img src="img/productos/vasija-organica.jpg" alt="Miniatura 4 - Composición Minimalista" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+      </button>
+    </div>
+  </section>
+
+  <div class="px-6 md:px-16 lg:px-24 max-w-[1920px] mx-auto">
+    <!-- ============ CONCEPTO ============ -->
+    <section class="max-w-4xl mx-auto mb-16 grid grid-cols-1 md:grid-cols-12 gap-8 border-b border-outline-variant pb-16">
+      <div class="md:col-span-4">
+        <h2 class="font-heading text-2xl font-bold text-primary mb-4">Concepto</h2>
+        <ul class="space-y-2 text-on-surface-variant font-body text-sm sm:text-base">
+          <li><strong class="text-primary font-semibold">Medio:</strong> Escultura Mixta / Luz</li>
+          <li><strong class="text-primary font-semibold">Dimensiones:</strong> Variable</li>
+          <li><strong class="text-primary font-semibold">Cliente:</strong> Galería Nacional</li>
+        </ul>
+      </div>
+      <div class="md:col-span-8">
+        <p class="font-body text-sm sm:text-base text-on-surface-variant leading-relaxed mb-4">El proyecto surge de la necesidad de materializar el ruido visual de las urbes contemporáneas en formas sólidas y contenidas. Utilizamos materiales industriales crudos —acero, concreto, y acrílico opaco— y los sometimos a un proceso de refinamiento manual extremo.</p>
+        <p class="font-body text-sm sm:text-base text-on-surface-variant leading-relaxed">Cada ángulo ha sido calculado para interactuar con la iluminación natural cambiante del espacio expositivo, asegurando que la obra ofrezca una lectura diferente en cada visita. La ausencia de ornamentación no es una falta de detalle, sino un enfoque obsesivo en la pureza de la forma y la sombra.</p>
+      </div>
+    </section>
+
+    <!-- ============ EXPLORACIÓN MATERIAL ============ -->
+    <section class="max-w-4xl mx-auto mb-20">
+      <h2 class="font-heading text-2xl sm:text-3xl font-bold text-primary tracking-tight mb-6">Exploración Material y Simbólica</h2>
+      <p class="font-body text-base sm:text-lg text-on-surface-variant leading-[1.8] text-justify mb-10">La concepción de esta obra responde a un riguroso proceso de investigación proyectual donde el vacío deja de ser una ausencia pasiva para transformarse en el eje estructurante del espacio galerístico contemporáneo. A través de la intersección entre bloques monolíticos opacos y líneas de tensión lumínica cuidadosamente calibradas, la pieza establece una coreografía constante entre la densidad del acero y la ingravidez de la penumbra circundante. Cada módulo volumétrico fue fabricado artesanalmente en el taller mediante soldaduras invisibles y pulidos sucesivos, logrando una superficie austera que repele cualquier distracción superficial para acentuar el impacto tectónico directo sobre el espectador.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <button type="button" class="gallery-detail-link group relative cursor-pointer overflow-hidden h-[280px] sm:h-[320px] bg-neutral-100 border border-outline-variant hover:border-primary transition-all text-left" data-slide="1">
+          <img alt="Detalle Material" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" src="img/proyecto/resonancia-estatica-2.jpg">
+          <div class="absolute bottom-4 left-4 bg-white/95 backdrop-blur-sm px-3 py-1 text-[10px] font-bold tracking-wider uppercase font-body text-primary shadow-sm">Detalle Material</div>
+        </button>
+        <button type="button" class="gallery-detail-link group relative cursor-pointer overflow-hidden h-[280px] sm:h-[320px] bg-neutral-100 border border-outline-variant hover:border-primary transition-all text-left" data-slide="2">
+          <img alt="Perspectiva Espacial" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" src="img/proyecto/resonancia-estatica-3.jpg">
+          <div class="absolute bottom-4 left-4 bg-white/95 backdrop-blur-sm px-3 py-1 text-[10px] font-bold tracking-wider uppercase font-body text-primary shadow-sm">Perspectiva Espacial</div>
+        </button>
+      </div>
+    </section>
+
+    <!-- ============ OTRAS OBRAS ============ -->
+    <section class="pt-8 border-t border-outline-variant">
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-12 border-b border-outline-variant pb-5">
+        <div>
+          <h2 class="font-heading text-2xl sm:text-3xl font-bold text-primary tracking-tight">Otras obras que te pueden interesar</h2>
+          <p class="font-body text-sm text-on-surface-variant mt-1">Una selección de piezas disponibles en ielou.studio.</p>
+        </div>
+        <a href="portafolio.html" class="font-body text-xs tracking-widest uppercase font-bold text-primary hover:text-neutral-600 transition-colors mt-4 sm:mt-0 flex items-center gap-1.5 group">
+          Ver toda la tienda
+          <span class="material-symbols-outlined text-base group-hover:translate-x-1 transition-transform">arrow_forward</span>
+        </a>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <article class="flex flex-col group">
+          <div class="relative overflow-hidden bg-neutral-100 aspect-square mb-4 flex items-center justify-center">
+            <img alt="Vasija Orgánica" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" src="img/productos/vasija-organica.jpg">
+            <span class="absolute top-3 left-3 bg-accent text-primary px-3 py-1 rounded-full font-body text-[10px] font-bold tracking-wider uppercase">Cerámica</span>
+          </div>
+          <h3 class="font-heading font-semibold text-lg text-primary mb-1">Vasija Orgánica</h3>
+          <p class="font-body text-xs text-on-surface-variant line-clamp-2 mb-2 leading-relaxed">Pieza única modelada a mano con acabados naturales y texturas orgánicas...</p>
+          <p class="font-heading font-bold text-sm text-primary mb-3">$45.000</p>
+          <div><a href="producto.html" class="inline-block bg-primary text-on-primary hover:bg-neutral-800 transition-colors rounded-full px-5 py-2 font-body text-[11px] font-bold tracking-wider uppercase">Comprar</a></div>
+        </article>
+        <article class="flex flex-col group">
+          <div class="relative overflow-hidden bg-neutral-100 aspect-square mb-4 flex items-center justify-center">
+            <img alt="Composición Visual 01" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" src="img/productos/composicion-visual-01.jpg">
+            <span class="absolute top-3 left-3 bg-accent text-primary px-3 py-1 rounded-full font-body text-[10px] font-bold tracking-wider uppercase">Print</span>
+          </div>
+          <h3 class="font-heading font-semibold text-lg text-primary mb-1">Composición Visual 01</h3>
+          <p class="font-body text-xs text-on-surface-variant line-clamp-2 mb-2 leading-relaxed">Lámina de arte generativo con contrastes geométricos y acentos vibrantes...</p>
+          <p class="font-heading font-bold text-sm text-primary mb-3">$25.000</p>
+          <div><a href="producto.html" class="inline-block bg-primary text-on-primary hover:bg-neutral-800 transition-colors rounded-full px-5 py-2 font-body text-[11px] font-bold tracking-wider uppercase">Comprar</a></div>
+        </article>
+        <article class="flex flex-col group">
+          <div class="relative overflow-hidden bg-neutral-100 aspect-square mb-4 flex items-center justify-center">
+            <img alt="Set Timbres Botánicos" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" src="img/productos/set-timbres-botanicos.jpg">
+            <span class="absolute top-3 left-3 bg-accent text-primary px-3 py-1 rounded-full font-body text-[10px] font-bold tracking-wider uppercase">Timbre</span>
+          </div>
+          <h3 class="font-heading font-semibold text-lg text-primary mb-1">Set Timbres Botánicos</h3>
+          <p class="font-body text-xs text-on-surface-variant line-clamp-2 mb-2 leading-relaxed">Colección de sellos tallados para estampar motivos naturales en papel...</p>
+          <p class="font-heading font-bold text-sm text-primary mb-3">$18.000</p>
+          <div><a href="producto.html" class="inline-block bg-primary text-on-primary hover:bg-neutral-800 transition-colors rounded-full px-5 py-2 font-body text-[11px] font-bold tracking-wider uppercase">Comprar</a></div>
+        </article>
+        <article class="flex flex-col group">
+          <div class="relative overflow-hidden bg-neutral-100 aspect-square mb-4 flex items-center justify-center">
+            <img alt="Estudio en Rojo" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" src="img/productos/estudio-en-rojo.jpg">
+            <span class="absolute top-3 left-3 bg-accent text-primary px-3 py-1 rounded-full font-body text-[10px] font-bold tracking-wider uppercase">Pintura</span>
+          </div>
+          <h3 class="font-heading font-semibold text-lg text-primary mb-1">Estudio en Rojo</h3>
+          <p class="font-body text-xs text-on-surface-variant line-clamp-2 mb-2 leading-relaxed">Obra original en acrílico sobre lienzo con trazos expresivos y minimalistas...</p>
+          <p class="font-heading font-bold text-sm text-primary mb-3">$120.000</p>
+          <div><a href="producto.html" class="inline-block bg-primary text-on-primary hover:bg-neutral-800 transition-colors rounded-full px-5 py-2 font-body text-[11px] font-bold tracking-wider uppercase">Comprar</a></div>
+        </article>
+      </div>
+    </section>
+  </div>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer id="contacto" class="bg-white border-t border-outline-variant text-primary w-full">
+  <div class="px-6 md:px-16 lg:px-24 py-16 max-w-[1920px] mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
+      <div class="lg:col-span-2 flex flex-col">
+        <span class="font-heading text-xl font-bold lowercase tracking-tight mb-2">ielou.studio by carola sandoval</span>
+        <p class="font-body text-xs text-on-surface-variant max-w-sm mb-2 leading-relaxed">Estudio creativo de artes visuales y diseño gráfico, by Carola Sandoval.</p>
+        <p class="font-body text-xs text-on-surface-variant mb-6">Santiago de Chile</p>
+        <div class="flex items-center gap-3">
+          <a aria-label="Instagram" href="https://instagram.com/ielou.studio" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-neutral-100 hover:bg-accent transition-colors flex items-center justify-center text-primary">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a aria-label="Facebook" href="#" class="w-9 h-9 rounded-full bg-neutral-100 hover:bg-accent transition-colors flex items-center justify-center text-primary">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a aria-label="LinkedIn" href="https://www.linkedin.com/in/carola-sandoval-a9076110b" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-neutral-100 hover:bg-accent transition-colors flex items-center justify-center text-primary">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          </a>
+          <a aria-label="Behance" href="https://www.behance.net/carolasandoval" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-neutral-100 hover:bg-accent transition-colors flex items-center justify-center text-primary">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-4.726 3-3.044 0-5.5-2.456-5.5-5.5 0-3.045 2.456-5.5 5.5-5.5 3.045 0 5.274 2.455 5.274 5.5v1h-8.274c.245 1.762 1.745 2.5 3 2.5 1.218 0 2.052-.772 2.441-1.5h2.285zm-7.726-3.5h5.727c-.24-1.428-1.516-2-2.727-2-1.341 0-2.559.84-2.854 2-.146.6-.146 0-.146 0zm-10-8.5h-6v14h6c3.313 0 6-2.687 6-6 0-1.85-1.15-3.5-2.5-4.5 1.05-.75 2.5-2.05 2.5-3.5 0-3.313-2.687-6-6-6zm-3.5 5h3.5c1.378 0 2.5 1.122 2.5 2.5s-1.122 2.5-2.5 2.5h-3.5v-5zm0 7h3.5c1.378 0 2.5 1.122 2.5 2.5s-1.122 2.5-2.5 2.5h-3.5v-5z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="flex flex-col">
+        <span class="font-body text-xs tracking-widest uppercase font-bold text-primary mb-4">Tienda</span>
+        <ul class="space-y-2.5 text-xs text-on-surface-variant font-body">
+          <li><a href="index.html#tienda" class="hover:text-primary transition-colors">Ver todo</a></li>
+          <li><a href="index.html#tienda" class="hover:text-primary transition-colors">Pinturas</a></li>
+          <li><a href="index.html#tienda" class="hover:text-primary transition-colors">Prints</a></li>
+          <li><a href="index.html#tienda" class="hover:text-primary transition-colors">Timbres</a></li>
+          <li><a href="index.html#tienda" class="hover:text-primary transition-colors">Objetos</a></li>
+        </ul>
+      </div>
+      <div class="flex flex-col">
+        <span class="font-body text-xs tracking-widest uppercase font-bold text-primary mb-4">Explorar</span>
+        <ul class="space-y-2.5 text-xs text-on-surface-variant font-body">
+          <li><a href="portafolio.html" class="hover:text-primary transition-colors">Portafolio</a></li>
+          <li><a href="contacto.html" class="hover:text-primary transition-colors">ielou.studio</a></li>
+        </ul>
+      </div>
+      <div class="flex flex-col">
+        <span class="font-body text-xs tracking-widest uppercase font-bold text-primary mb-4">Ayuda</span>
+        <ul class="space-y-2.5 text-xs text-on-surface-variant font-body">
+          <li><a href="contacto.html" class="hover:text-primary transition-colors">Contacto</a></li>
+          <li><a href="#" class="hover:text-primary transition-colors">Cambios y devoluciones</a></li>
+          <li><a href="index.html#preguntas-frecuentes" class="hover:text-primary transition-colors">Preguntas frecuentes</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-outline-variant mt-12 pt-6 flex flex-col sm:flex-row justify-between items-center text-xs text-on-surface-variant gap-4">
+      <p>© 2026 ielou.studio · Chile</p>
+      <div class="flex gap-6">
+        <a href="#" class="hover:text-primary transition-colors">Términos y condiciones</a>
+        <a href="#" class="hover:text-primary transition-colors">Política de privacidad</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ MODAL ZOOM ============ -->
+<div id="imageModal" class="fixed inset-0 z-[100] bg-black/90 backdrop-blur-sm hidden flex items-center justify-center p-6 opacity-0 transition-opacity duration-300">
+  <button id="modal-close-btn" aria-label="Cerrar modal" class="absolute top-6 right-6 text-white hover:text-neutral-300 transition-colors">
+    <span class="material-symbols-outlined text-[32px]">close</span>
+  </button>
+  <img id="modalImage" alt="Visualización ampliada" class="max-w-full max-h-[90vh] object-contain shadow-2xl transition-transform duration-500 scale-95" src="">
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>

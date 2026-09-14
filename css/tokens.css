@@ -1,0 +1,51 @@
+/*
+  ielou.studio — Design tokens (fuente única de verdad)
+  ---------------------------------------------------
+  Estas variables son la referencia para el developer que arme el
+  Theme Builder de Elementor: Global Colors = los --color-*,
+  Global Fonts = --font-heading / --font-body.
+
+  El objeto tailwind.config incluido en cada página usa los MISMOS
+  valores hexadecimales que aquí (Tailwind CDN no lee custom
+  properties de forma confiable en todos los contextos), así que si
+  cambias un color, actualízalo en AMBOS lugares.
+*/
+
+:root {
+  /* Color */
+  --color-primary: #000000;
+  --color-on-primary: #ffffff;
+  --color-background: #f9f9f9;
+  --color-surface: #ffffff;
+  --color-on-surface: #1b1b1b;
+  --color-on-surface-variant: #57534e;
+  --color-border: #e5e5e5;
+  --color-accent: #ffe16d;      /* amarillo de marca — único, no usar #FFD966 / #FDD835 */
+  --color-accent-dark: #e9c400; /* hover sobre superficies amarillas */
+
+  /* Tipografía */
+  --font-heading: 'Montserrat', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  /* Header fijo: mismo alto en todas las páginas */
+  --header-height: 88px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-on-surface);
+}
+
+::selection {
+  background-color: var(--color-accent);
+  color: var(--color-primary);
+}
+
+/* Oculta el marcador nativo de <details> (usado en los acordeones de FAQ) */
+details summary::-webkit-details-marker {
+  display: none;
+}
