@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contacto — ielou.studio</title>
-<meta name="description" content="Escríbenos para comisiones, colaboraciones o dudas sobre una pieza.">
+<title>Términos y Condiciones — ielou.studio</title>
+<meta name="description" content="Términos y condiciones de compra en ielou.studio.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -36,6 +36,14 @@
 </script>
 <link rel="stylesheet" href="css/tokens.css">
 </head>
+<!--
+  Nota para Carola / el developer: este texto es una base correcta y
+  aterrizada, pero NO es asesoría legal. Antes de publicar el sitio en
+  producción, pídele a tu contador o abogada que lo revise —en especial
+  el punto 1 (falta completar el RUT) y el punto 7, que depende de que
+  las políticas de Envíos y de Cambios y Devoluciones también hayan sido
+  revisadas. Ver README.md para más detalle.
+-->
 <body class="bg-background text-on-surface font-body min-h-screen flex flex-col antialiased selection:bg-accent selection:text-black">
 
 <!-- ============ HEADER ============ -->
@@ -57,7 +65,7 @@
         </div>
       </div>
       <a href="portafolio.html" class="text-xs tracking-widest uppercase font-semibold font-body text-on-surface-variant hover:text-accent-dark transition-colors">Portafolio</a>
-      <a href="contacto.html" class="text-xs tracking-widest uppercase font-semibold font-body text-primary border-b-2 border-primary pb-0.5 transition-colors">Contacto</a>
+      <a href="contacto.html" class="text-xs tracking-widest uppercase font-semibold font-body text-on-surface-variant hover:text-accent-dark transition-colors">Contacto</a>
     </nav>
     <div class="flex items-center gap-4">
       <a href="tienda.html" aria-label="Bolsa de compra" class="relative p-2.5 -m-2.5 hover:opacity-75 transition-opacity text-primary flex items-center justify-center">
@@ -73,70 +81,62 @@
     <a href="index.html" class="text-xs font-semibold uppercase tracking-widest text-on-surface-variant py-1">Inicio</a>
     <a href="tienda.html" class="text-xs font-semibold uppercase tracking-widest text-on-surface-variant py-1">Tienda</a>
     <a href="portafolio.html" class="text-xs font-semibold uppercase tracking-widest text-on-surface-variant py-1">Portafolio</a>
-    <a href="contacto.html" class="text-xs font-bold uppercase tracking-widest text-primary py-1">Contacto</a>
+    <a href="contacto.html" class="text-xs font-semibold uppercase tracking-widest text-on-surface-variant py-1">Contacto</a>
   </div>
 </header>
 
 <main class="flex-grow" style="padding-top: var(--header-height);">
+  <div class="px-6 md:px-16 lg:px-24 py-16 max-w-3xl mx-auto">
+    <nav class="mb-6 flex items-center gap-2 font-body text-xs text-on-surface-variant uppercase tracking-widest">
+      <a href="index.html" class="hover:text-primary transition-colors">Inicio</a>
+      <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+      <span class="text-primary font-bold">Términos y condiciones</span>
+    </nav>
+    <h1 class="font-heading text-3xl sm:text-4xl font-bold tracking-tight text-primary mb-10">Términos y Condiciones</h1>
 
-  <!-- ============ PRESENTACIÓN DEL ESTUDIO ============ -->
-  <section class="px-6 md:px-16 lg:px-24 py-16 md:py-24 grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-14 items-center max-w-[1920px] mx-auto">
-    <div class="md:col-span-6 space-y-6">
-      <h1 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-primary lowercase">ielou.studio</h1>
-      <p class="font-body text-base sm:text-lg text-on-surface-variant max-w-2xl leading-relaxed">
-        ielou.studio es el espacio creativo de Carola Sandoval, dedicado a piezas hechas a mano, artes visuales y diseño gráfico. Cada obra nace de procesos manuales —pintura, grabado, cerámica y estampado— trabajados con dedicación meticulosa y un lenguaje minimalista.
-      </p>
-    </div>
-    <div class="md:col-span-6 relative aspect-square overflow-hidden">
-      <img class="object-cover w-full h-full" alt="Espacio de trabajo del estudio ielou.studio" src="img/contacto/estudio-workspace.jpg">
-    </div>
-  </section>
-
-  <!-- ============ CONTACTO ============ -->
-  <section class="px-6 md:px-16 lg:px-24 py-16 md:py-24 bg-white border-y border-outline-variant grid grid-cols-1 md:grid-cols-12 gap-10 max-w-[1920px] mx-auto">
-    <div class="md:col-span-5 space-y-6">
-      <h2 class="font-heading text-2xl sm:text-3xl font-bold text-primary tracking-tight">Contacto</h2>
-      <p class="font-body text-sm sm:text-base text-on-surface-variant leading-relaxed">
-        Estamos abiertas a comisiones, colaboraciones y conversaciones. Escríbenos para contarnos sobre tu proyecto o para consultar por una pieza disponible.
-      </p>
-      <div class="space-y-2 pt-2">
-        <p class="font-body text-sm text-primary font-bold">Email: <span class="font-normal text-on-surface-variant">hola@ielou.studio</span></p>
-        <p class="font-body text-sm text-primary font-bold">Ubicación: <span class="font-normal text-on-surface-variant">Santiago de Chile</span></p>
-      </div>
-    </div>
-    <div class="md:col-span-7 md:pl-12">
-      <!--
-        Nota para el developer: este formulario usa mailto: como fallback estático.
-        En WordPress, reemplazar por el widget de formulario nativo de Elementor Pro
-        o por el plugin gratuito WPForms (ver README.md).
-      -->
-      <form class="space-y-6" action="mailto:hola@ielou.studio" method="get" enctype="text/plain">
-        <div>
-          <input class="w-full bg-transparent border-0 border-b border-outline-variant text-primary placeholder-on-surface-variant focus:border-accent focus:ring-0 px-0 py-2 font-body text-sm transition-colors" id="name" name="name" placeholder="Nombre" type="text" required>
-        </div>
-        <div>
-          <input class="w-full bg-transparent border-0 border-b border-outline-variant text-primary placeholder-on-surface-variant focus:border-accent focus:ring-0 px-0 py-2 font-body text-sm transition-colors" id="email" name="email" placeholder="Email" type="email" required>
-        </div>
-        <div>
-          <textarea class="w-full bg-transparent border-0 border-b border-outline-variant text-primary placeholder-on-surface-variant focus:border-accent focus:ring-0 px-0 py-2 font-body text-sm transition-colors resize-none" id="message" name="message" placeholder="Mensaje" rows="4" required></textarea>
-        </div>
-        <div class="pt-2">
-          <button class="bg-primary text-on-primary rounded-full px-8 py-3 font-body text-xs tracking-widest uppercase font-semibold hover:bg-accent hover:text-primary transition-colors duration-300" type="submit">Enviar mensaje</button>
-        </div>
-      </form>
-    </div>
-  </section>
-
-  <!-- ============ ¿DUDAS? ============ -->
-  <section class="px-6 md:px-16 lg:px-24 py-16 max-w-3xl mx-auto text-center">
-    <h2 class="font-heading text-xl sm:text-2xl font-bold text-primary tracking-tight mb-3">¿Tienes dudas sobre compras o envíos?</h2>
-    <p class="font-body text-sm text-on-surface-variant mb-6 leading-relaxed">Revisa las preguntas frecuentes sobre el proceso de compra, envíos y cuidado de las piezas.</p>
-    <a href="index.html#preguntas-frecuentes" class="inline-flex items-center gap-1.5 font-body text-xs tracking-widest uppercase font-semibold text-primary hover:text-neutral-600 transition-colors">
-      Ver preguntas frecuentes
-      <span class="material-symbols-outlined text-base">arrow_forward</span>
-    </a>
-  </section>
-
+    <ol class="space-y-8 list-none">
+      <li>
+        <h2 class="font-heading text-base font-bold text-primary mb-1.5">1. Quién soy</h2>
+        <p class="font-body text-sm text-on-surface-variant leading-relaxed">ielou.studio es el espacio creativo de Carola Sandoval, dedicado a piezas hechas a mano, artes visuales y diseño. Vendo como persona natural, Carola Sandoval, RUT [pendiente — completar antes de publicar]. Contacto: <a href="mailto:carola.sandoval@hotmail.com" class="text-primary underline font-semibold hover:text-accent-dark transition-colors">carola.sandoval@hotmail.com</a>.</p>
+      </li>
+      <li>
+        <h2 class="font-heading text-base font-bold text-primary mb-1.5">2. Aceptación</h2>
+        <p class="font-body text-sm text-on-surface-variant leading-relaxed">Al comprar en el sitio aceptas estos términos, que se rigen por las leyes de Chile, en especial la Ley 19.496 de protección al consumidor.</p>
+      </li>
+      <li>
+        <h2 class="font-heading text-base font-bold text-primary mb-1.5">3. Cómo comprar</h2>
+        <p class="font-body text-sm text-on-surface-variant leading-relaxed">Eliges tu pieza, envías la solicitud con tus datos, y coordino contigo el pago (transferencia o link seguro) y el envío. La compra se concreta una vez confirmado el pago.</p>
+      </li>
+      <li>
+        <h2 class="font-heading text-base font-bold text-primary mb-1.5">4. Precios y disponibilidad</h2>
+        <p class="font-body text-sm text-on-surface-variant leading-relaxed">Los precios están en pesos chilenos. Como muchas piezas son únicas, la disponibilidad puede cambiar; si una pieza ya no está, te aviso y devuelvo cualquier pago recibido.</p>
+      </li>
+      <li>
+        <h2 class="font-heading text-base font-bold text-primary mb-1.5">5. Medios de pago</h2>
+        <p class="font-body text-sm text-on-surface-variant leading-relaxed">Transferencia bancaria o link de pago seguro. Los medios de pago externos son operados por terceros; su funcionamiento no depende de ielou.studio.</p>
+      </li>
+      <li>
+        <h2 class="font-heading text-base font-bold text-primary mb-1.5">6. Comprobante</h2>
+        <p class="font-body text-sm text-on-surface-variant leading-relaxed">Entrego comprobante de compra y el certificado de autenticidad de la obra.</p>
+      </li>
+      <li>
+        <h2 class="font-heading text-base font-bold text-primary mb-1.5">7. Envíos, cambios y retracto</h2>
+        <p class="font-body text-sm text-on-surface-variant leading-relaxed">Se rigen por las políticas de <a href="politica-envios.html" class="text-primary underline font-semibold hover:text-accent-dark transition-colors">Envíos</a> y de <a href="cambios-y-devoluciones.html" class="text-primary underline font-semibold hover:text-accent-dark transition-colors">Cambios y Devoluciones</a> publicadas en el sitio.</p>
+      </li>
+      <li>
+        <h2 class="font-heading text-base font-bold text-primary mb-1.5">8. Propiedad intelectual</h2>
+        <p class="font-body text-sm text-on-surface-variant leading-relaxed">Todas las obras, imágenes y textos son de autoría de Carola Sandoval y están protegidos por la ley. No pueden reproducirse ni usarse con fines comerciales sin autorización escrita.</p>
+      </li>
+      <li>
+        <h2 class="font-heading text-base font-bold text-primary mb-1.5">9. Datos personales</h2>
+        <p class="font-body text-sm text-on-surface-variant leading-relaxed">Se tratan según la <a href="politica-privacidad.html" class="text-primary underline font-semibold hover:text-accent-dark transition-colors">Política de Privacidad</a> y la Ley 19.628.</p>
+      </li>
+      <li>
+        <h2 class="font-heading text-base font-bold text-primary mb-1.5">10. Vigencia</h2>
+        <p class="font-body text-sm text-on-surface-variant leading-relaxed">Puedo actualizar estos términos publicándolos en el sitio.</p>
+      </li>
+    </ol>
+  </div>
 </main>
 
 <!-- ============ FOOTER ============ -->

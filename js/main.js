@@ -65,110 +65,199 @@ function initProductGallery() {
   }
 }
 
-/* ---------- Checkout: método de envío + cascada región/comuna Starken ---------- */
-const STARKEN_DATA = {
-  'Región de Arica y Parinacota': ['Arica'],
-  'Región de Tarapacá': ['Alto Hospicio', 'Iquique'],
-  'Región de Antofagasta': ['Antofagasta', 'Calama', 'Tocopilla'],
-  'Región de Atacama': ['Caldera', 'Chañaral', 'Copiapó', 'Vallenar'],
-  'Región de Coquimbo': ['Coquimbo', 'Illapel', 'La Serena', 'Los Vilos', 'Ovalle', 'Vicuña'],
-  'Región de Valparaíso': [
-    'Casablanca', 'Concón', 'El Quisco', 'La Calera', 'La Ligua', 'Limache',
-    'Los Andes', 'Quilpué', 'San Antonio', 'San Felipe', 'Valparaíso', 'Villa Alemana', 'Viña del Mar',
-  ],
-  'Región Metropolitana de Santiago': [
-    'Buin', 'Cerrillos', 'Colina', 'Conchalí', 'Curacaví', 'El Bosque',
-    'Estación Central', 'Huechuraba', 'Independencia', 'La Cisterna', 'La Florida',
-    'La Reina', 'Las Condes', 'Lo Barnechea', 'Lo Prado', 'Macul', 'Maipú',
-    'Melipilla', 'Ñuñoa', 'Padre Hurtado', 'Peñaflor', 'Peñalolén', 'Providencia',
-    'Pudahuel', 'Puente Alto', 'Quilicura', 'Quinta Normal', 'Recoleta', 'Renca',
-    'San Bernardo', 'San Joaquín', 'San Miguel', 'Santiago', 'Talagante', 'Vitacura',
-  ],
-  'Región de O’Higgins': ['Graneros', 'Machalí', 'Rancagua', 'Rengo', 'San Fernando', 'San Vicente', 'Santa Cruz'],
-  'Región del Maule': ['Curicó', 'Linares', 'Parral', 'Talca'],
-  'Región de Ñuble': ['Bulnes', 'Chillán', 'Quillón', 'San Carlos'],
-  'Región del Biobío': [
-    'Arauco', 'Cabrero', 'Cañete', 'Chiguayante', 'Concepción', 'Coronel',
-    'Curanilahue', 'Hualpén', 'Laja', 'Lebu', 'Los Ángeles', 'Lota', 'Mulchén',
-    'Penco', 'Talcahuano', 'Tomé', 'Yumbel',
-  ],
-  'Región de La Araucanía': [
-    'Angol', 'Carahue', 'Collipulli', 'Curacautín', 'Freire', 'Lautaro',
-    'Loncoche', 'Nueva Imperial', 'Pitrufquén', 'Pucón', 'Temuco', 'Victoria', 'Villarrica',
-  ],
-  'Región de Los Ríos': ['La Unión', 'Panguipulli', 'Río Bueno', 'Valdivia'],
-  'Región de Los Lagos': ['Ancud', 'Calbuco', 'Castro', 'Frutillar', 'Osorno', 'Puerto Montt', 'Purranque', 'Quellón'],
-  'Región de Aysén': ['Coyhaique'],
-  'Región de Magallanes y de la Antártica Chilena': ['Puerto Natales', 'Punta Arenas'],
+/* ---------- Checkout: actualiza el resumen según el método de envío elegido ---------- */
+const STUDIO_EMAIL = 'carola.sandoval@hotmail.com';
+
+const SHIPPING_LABELS = {
+  domicilio: 'Se confirma según destino',
+  sucursal: 'Por pagar en sucursal',
+  retiro: 'Coordinado por correo (sin costo)',
 };
+
+const SHIPPING_FULL_NAMES = {
+  domicilio: 'Envío a domicilio (Starken o Chilexpress)',
+  sucursal: 'Retiro en sucursal (Starken o Chilexpress)',
+  retiro: 'Retiro presencial en Plaza Ñuñoa, Santiago',
+};
+
+function buildCheckoutTemplateParams() {
+  const val = (id) => (document.getElementById(id)?.value || '').trim();
+  const checked = document.querySelector('input[name="shipping_method"]:checked');
+  const shippingName = checked ? (SHIPPING_FULL_NAMES[checked.value] || checked.value) : '(no seleccionado)';
+  return {
+    product_name: document.getElementById('summary-product-name')?.textContent.trim() || '',
+    product_price: document.getElementById('summary-product-price')?.textContent.trim() || '',
+    buyer_name: val('buyer-name'),
+    buyer_email: val('buyer-email'),
+    buyer_phone: val('buyer-phone'),
+    buyer_rut: val('buyer-rut'),
+    shipping_address: val('shipping-address'),
+    shipping_comuna: val('shipping-comuna'),
+    shipping_city: val('shipping-city'),
+    shipping_region: val('shipping-region'),
+    shipping_method: shippingName,
+    order_notes: val('order-notes') || '(sin notas)',
+  };
+}
+
+function buildCheckoutMailto(params) {
+  const lines = [
+    `Pieza: ${params.product_name}`,
+    `Precio: ${params.product_price}`,
+    '',
+    'DATOS DEL COMPRADOR',
+    `Nombre y apellido: ${params.buyer_name}`,
+    `Correo electrónico: ${params.buyer_email}`,
+    `Teléfono: ${params.buyer_phone}`,
+    `RUT: ${params.buyer_rut}`,
+    '',
+    'DIRECCIÓN DE ENVÍO',
+    `Dirección: ${params.shipping_address}`,
+    `Comuna: ${params.shipping_comuna}`,
+    `Ciudad: ${params.shipping_city}`,
+    `Región: ${params.shipping_region}`,
+    '',
+    `Método de entrega elegido: ${params.shipping_method}`,
+    '',
+    `Notas: ${params.order_notes}`,
+  ];
+
+  const subject = `Solicitud de compra — ${params.product_name}`;
+  const body = lines.join('\n');
+  return `mailto:${STUDIO_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
+
+function isEmailJsReady() {
+  return typeof EMAILJS_CONFIG !== 'undefined'
+    && typeof emailjs !== 'undefined'
+    && !/^TU_/.test(EMAILJS_CONFIG.publicKey)
+    && !/^TU_/.test(EMAILJS_CONFIG.serviceId)
+    && !/^TU_/.test(EMAILJS_CONFIG.templateOwnerId)
+    && !/^TU_/.test(EMAILJS_CONFIG.templateCustomerId);
+}
+
+function sendCheckoutViaEmailJs(params) {
+  emailjs.init({ publicKey: EMAILJS_CONFIG.publicKey });
+  return Promise.all([
+    emailjs.send(EMAILJS_CONFIG.serviceId, EMAILJS_CONFIG.templateOwnerId, params),
+    emailjs.send(EMAILJS_CONFIG.serviceId, EMAILJS_CONFIG.templateCustomerId, params),
+  ]);
+}
+
+function populateSelect(select, options, placeholder) {
+  select.innerHTML = '';
+  const opt = document.createElement('option');
+  opt.value = '';
+  opt.textContent = placeholder;
+  select.appendChild(opt);
+  options.forEach((value) => {
+    const o = document.createElement('option');
+    o.value = value;
+    o.textContent = value;
+    select.appendChild(o);
+  });
+}
+
+function applyCheckoutProductFromUrl() {
+  const params = new URLSearchParams(window.location.search);
+  const nombre = params.get('nombre');
+  if (!nombre) return;
+
+  const precio = params.get('precio') || '';
+  const img = params.get('img') || '';
+  const categoria = params.get('categoria') || '';
+
+  const nameEl = document.getElementById('summary-product-name');
+  const priceEl = document.getElementById('summary-product-price');
+  const subtotalEl = document.getElementById('summary-subtotal');
+  const totalEl = document.getElementById('total-amount-display');
+  const imgEl = document.getElementById('summary-product-img');
+  const badgeEl = document.getElementById('summary-product-badge');
+
+  if (nameEl) nameEl.textContent = nombre;
+  if (priceEl && precio) priceEl.textContent = precio;
+  if (subtotalEl && precio) subtotalEl.textContent = precio;
+  if (totalEl && precio) totalEl.textContent = precio;
+  if (imgEl && img) { imgEl.src = img; imgEl.alt = nombre; }
+  if (badgeEl && categoria) badgeEl.textContent = categoria;
+}
 
 function initCheckoutForm() {
   const form = document.getElementById('purchase-order-form');
-  const regionSelect = document.getElementById('starken-region');
-  const citySelect = document.getElementById('starken-city');
-  if (!form || !regionSelect || !citySelect) return;
-
-  Object.keys(STARKEN_DATA).forEach((region) => {
-    const opt = document.createElement('option');
-    opt.value = region;
-    opt.textContent = region;
-    regionSelect.appendChild(opt);
-  });
-
-  regionSelect.addEventListener('change', () => {
-    const cities = STARKEN_DATA[regionSelect.value];
-    citySelect.innerHTML = '';
-    const placeholder = document.createElement('option');
-    placeholder.value = '';
-    if (cities) {
-      citySelect.disabled = false;
-      placeholder.textContent = '-- Selecciona Ciudad / Comuna --';
-      citySelect.appendChild(placeholder);
-      cities.forEach((city) => {
-        const opt = document.createElement('option');
-        opt.value = city;
-        opt.textContent = city;
-        citySelect.appendChild(opt);
-      });
-    } else {
-      citySelect.disabled = true;
-      placeholder.textContent = '-- Primero selecciona una región --';
-      citySelect.appendChild(placeholder);
-    }
-  });
-
-  const starkenPanel = document.getElementById('starken-cascading-panel');
-  const deliveryPanel = document.getElementById('home-delivery-panel');
   const shippingLabel = document.getElementById('shipping-cost-label');
   const shippingRadios = document.querySelectorAll('input[name="shipping_method"]');
+  const regionSelect = document.getElementById('shipping-region');
+  const citySelect = document.getElementById('shipping-city');
+  const comunaSelect = document.getElementById('shipping-comuna');
+  if (!form || !shippingLabel || !shippingRadios.length) return;
+
+  applyCheckoutProductFromUrl();
+
+  if (regionSelect && citySelect && comunaSelect && typeof CHILE_REGIONES !== 'undefined') {
+    populateSelect(regionSelect, Object.keys(CHILE_REGIONES), '-- Elige una región --');
+
+    regionSelect.addEventListener('change', () => {
+      const cities = CHILE_REGIONES[regionSelect.value];
+      if (cities) {
+        populateSelect(citySelect, Object.keys(cities), '-- Elige una ciudad --');
+        citySelect.disabled = false;
+      } else {
+        populateSelect(citySelect, [], '-- Primero elige una región --');
+        citySelect.disabled = true;
+      }
+      populateSelect(comunaSelect, [], '-- Primero elige una ciudad --');
+      comunaSelect.disabled = true;
+    });
+
+    citySelect.addEventListener('change', () => {
+      const comunas = CHILE_REGIONES[regionSelect.value]?.[citySelect.value];
+      if (comunas) {
+        populateSelect(comunaSelect, comunas, '-- Elige una comuna --');
+        comunaSelect.disabled = false;
+      } else {
+        populateSelect(comunaSelect, [], '-- Primero elige una ciudad --');
+        comunaSelect.disabled = true;
+      }
+    });
+  }
 
   function handleShippingChange() {
     const checked = document.querySelector('input[name="shipping_method"]:checked');
     if (!checked) return;
-    starkenPanel.classList.add('hidden');
-    deliveryPanel.classList.add('hidden');
-
-    if (checked.value === 'pickup') {
-      shippingLabel.textContent = 'Retiro gratis (Ñuñoa)';
-      shippingLabel.className = 'text-emerald-700 font-semibold';
-    } else if (checked.value === 'starken') {
-      starkenPanel.classList.remove('hidden');
-      shippingLabel.textContent = 'Por pagar (en sucursal Starken)';
-      shippingLabel.className = 'text-neutral-900 font-medium';
-    } else if (checked.value === 'delivery') {
-      deliveryPanel.classList.remove('hidden');
-      shippingLabel.textContent = 'Por pagar (contra entrega)';
-      shippingLabel.className = 'text-neutral-900 font-medium';
-    }
+    shippingLabel.textContent = SHIPPING_LABELS[checked.value] || '';
   }
   shippingRadios.forEach((r) => r.addEventListener('change', handleShippingChange));
 
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
+  function showCheckoutSuccess() {
     const successMsg = document.getElementById('success-message');
     if (successMsg) {
       successMsg.classList.remove('hidden');
       successMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  }
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (!form.reportValidity()) return;
+
+    const params = buildCheckoutTemplateParams();
+    const submitBtn = form.querySelector('button[type="submit"]');
+
+    if (isEmailJsReady()) {
+      if (submitBtn) submitBtn.disabled = true;
+      sendCheckoutViaEmailJs(params)
+        .then(() => showCheckoutSuccess())
+        .catch((err) => {
+          console.error('EmailJS falló, se usa mailto de respaldo:', err);
+          window.location.href = buildCheckoutMailto(params);
+          showCheckoutSuccess();
+        })
+        .finally(() => {
+          if (submitBtn) submitBtn.disabled = false;
+        });
+    } else {
+      window.location.href = buildCheckoutMailto(params);
+      showCheckoutSuccess();
     }
   });
 }

@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contacto — ielou.studio</title>
-<meta name="description" content="Escríbenos para comisiones, colaboraciones o dudas sobre una pieza.">
+<title>Política de Envíos — ielou.studio</title>
+<meta name="description" content="Cobertura, costos y plazos de despacho de ielou.studio.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -57,7 +57,7 @@
         </div>
       </div>
       <a href="portafolio.html" class="text-xs tracking-widest uppercase font-semibold font-body text-on-surface-variant hover:text-accent-dark transition-colors">Portafolio</a>
-      <a href="contacto.html" class="text-xs tracking-widest uppercase font-semibold font-body text-primary border-b-2 border-primary pb-0.5 transition-colors">Contacto</a>
+      <a href="contacto.html" class="text-xs tracking-widest uppercase font-semibold font-body text-on-surface-variant hover:text-accent-dark transition-colors">Contacto</a>
     </nav>
     <div class="flex items-center gap-4">
       <a href="tienda.html" aria-label="Bolsa de compra" class="relative p-2.5 -m-2.5 hover:opacity-75 transition-opacity text-primary flex items-center justify-center">
@@ -73,70 +73,49 @@
     <a href="index.html" class="text-xs font-semibold uppercase tracking-widest text-on-surface-variant py-1">Inicio</a>
     <a href="tienda.html" class="text-xs font-semibold uppercase tracking-widest text-on-surface-variant py-1">Tienda</a>
     <a href="portafolio.html" class="text-xs font-semibold uppercase tracking-widest text-on-surface-variant py-1">Portafolio</a>
-    <a href="contacto.html" class="text-xs font-bold uppercase tracking-widest text-primary py-1">Contacto</a>
+    <a href="contacto.html" class="text-xs font-semibold uppercase tracking-widest text-on-surface-variant py-1">Contacto</a>
   </div>
 </header>
 
 <main class="flex-grow" style="padding-top: var(--header-height);">
+  <div class="px-6 md:px-16 lg:px-24 py-16 max-w-3xl mx-auto">
+    <nav class="mb-6 flex items-center gap-2 font-body text-xs text-on-surface-variant uppercase tracking-widest">
+      <a href="index.html" class="hover:text-primary transition-colors">Inicio</a>
+      <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+      <span class="text-primary font-bold">Política de envíos</span>
+    </nav>
+    <h1 class="font-heading text-3xl sm:text-4xl font-bold tracking-tight text-primary mb-10">Política de Envíos</h1>
 
-  <!-- ============ PRESENTACIÓN DEL ESTUDIO ============ -->
-  <section class="px-6 md:px-16 lg:px-24 py-16 md:py-24 grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-14 items-center max-w-[1920px] mx-auto">
-    <div class="md:col-span-6 space-y-6">
-      <h1 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-primary lowercase">ielou.studio</h1>
-      <p class="font-body text-base sm:text-lg text-on-surface-variant max-w-2xl leading-relaxed">
-        ielou.studio es el espacio creativo de Carola Sandoval, dedicado a piezas hechas a mano, artes visuales y diseño gráfico. Cada obra nace de procesos manuales —pintura, grabado, cerámica y estampado— trabajados con dedicación meticulosa y un lenguaje minimalista.
-      </p>
-    </div>
-    <div class="md:col-span-6 relative aspect-square overflow-hidden">
-      <img class="object-cover w-full h-full" alt="Espacio de trabajo del estudio ielou.studio" src="img/contacto/estudio-workspace.jpg">
-    </div>
-  </section>
+    <div class="space-y-10">
+      <section>
+        <h2 class="font-heading text-lg font-bold text-primary mb-2">Cobertura</h2>
+        <p class="font-body text-sm text-on-surface-variant leading-relaxed">Despacho a todo Chile vía Starken y Chilexpress. Envíos internacionales solo con coordinación previa por correo.</p>
+      </section>
 
-  <!-- ============ CONTACTO ============ -->
-  <section class="px-6 md:px-16 lg:px-24 py-16 md:py-24 bg-white border-y border-outline-variant grid grid-cols-1 md:grid-cols-12 gap-10 max-w-[1920px] mx-auto">
-    <div class="md:col-span-5 space-y-6">
-      <h2 class="font-heading text-2xl sm:text-3xl font-bold text-primary tracking-tight">Contacto</h2>
-      <p class="font-body text-sm sm:text-base text-on-surface-variant leading-relaxed">
-        Estamos abiertas a comisiones, colaboraciones y conversaciones. Escríbenos para contarnos sobre tu proyecto o para consultar por una pieza disponible.
-      </p>
-      <div class="space-y-2 pt-2">
-        <p class="font-body text-sm text-primary font-bold">Email: <span class="font-normal text-on-surface-variant">hola@ielou.studio</span></p>
-        <p class="font-body text-sm text-primary font-bold">Ubicación: <span class="font-normal text-on-surface-variant">Santiago de Chile</span></p>
-      </div>
-    </div>
-    <div class="md:col-span-7 md:pl-12">
-      <!--
-        Nota para el developer: este formulario usa mailto: como fallback estático.
-        En WordPress, reemplazar por el widget de formulario nativo de Elementor Pro
-        o por el plugin gratuito WPForms (ver README.md).
-      -->
-      <form class="space-y-6" action="mailto:hola@ielou.studio" method="get" enctype="text/plain">
-        <div>
-          <input class="w-full bg-transparent border-0 border-b border-outline-variant text-primary placeholder-on-surface-variant focus:border-accent focus:ring-0 px-0 py-2 font-body text-sm transition-colors" id="name" name="name" placeholder="Nombre" type="text" required>
-        </div>
-        <div>
-          <input class="w-full bg-transparent border-0 border-b border-outline-variant text-primary placeholder-on-surface-variant focus:border-accent focus:ring-0 px-0 py-2 font-body text-sm transition-colors" id="email" name="email" placeholder="Email" type="email" required>
-        </div>
-        <div>
-          <textarea class="w-full bg-transparent border-0 border-b border-outline-variant text-primary placeholder-on-surface-variant focus:border-accent focus:ring-0 px-0 py-2 font-body text-sm transition-colors resize-none" id="message" name="message" placeholder="Mensaje" rows="4" required></textarea>
-        </div>
-        <div class="pt-2">
-          <button class="bg-primary text-on-primary rounded-full px-8 py-3 font-body text-xs tracking-widest uppercase font-semibold hover:bg-accent hover:text-primary transition-colors duration-300" type="submit">Enviar mensaje</button>
-        </div>
-      </form>
-    </div>
-  </section>
+      <section>
+        <h2 class="font-heading text-lg font-bold text-primary mb-2">Costos</h2>
+        <ul class="font-body text-sm text-on-surface-variant leading-relaxed space-y-2 list-disc pl-5">
+          <li><strong class="text-primary font-semibold">A domicilio:</strong> el valor se confirma según destino y dimensiones al momento de despachar.</li>
+          <li><strong class="text-primary font-semibold">A sucursal:</strong> modalidad por pagar — cancelas el envío al retirar en la sucursal del courier.</li>
+          <li><strong class="text-primary font-semibold">Retiro presencial:</strong> sin costo, coordinado en Plaza Ñuñoa, Santiago.</li>
+        </ul>
+      </section>
 
-  <!-- ============ ¿DUDAS? ============ -->
-  <section class="px-6 md:px-16 lg:px-24 py-16 max-w-3xl mx-auto text-center">
-    <h2 class="font-heading text-xl sm:text-2xl font-bold text-primary tracking-tight mb-3">¿Tienes dudas sobre compras o envíos?</h2>
-    <p class="font-body text-sm text-on-surface-variant mb-6 leading-relaxed">Revisa las preguntas frecuentes sobre el proceso de compra, envíos y cuidado de las piezas.</p>
-    <a href="index.html#preguntas-frecuentes" class="inline-flex items-center gap-1.5 font-body text-xs tracking-widest uppercase font-semibold text-primary hover:text-neutral-600 transition-colors">
-      Ver preguntas frecuentes
-      <span class="material-symbols-outlined text-base">arrow_forward</span>
-    </a>
-  </section>
+      <section>
+        <h2 class="font-heading text-lg font-bold text-primary mb-2">Plazos de preparación</h2>
+        <p class="font-body text-sm text-on-surface-variant leading-relaxed">Preparo cada pieza a mano en 3 a 5 días hábiles antes de despacharla, aunque puede ser menos. Si necesitas que llegue antes, escríbeme y vemos la factibilidad.</p>
+      </section>
 
+      <section>
+        <h2 class="font-heading text-lg font-bold text-primary mb-2">Tiempos de entrega (referenciales del courier)</h2>
+        <ul class="font-body text-sm text-on-surface-variant leading-relaxed space-y-2 list-disc pl-5">
+          <li>Región Metropolitana: 2 a 5 días hábiles</li>
+          <li>Otras regiones: un poco más, según destino</li>
+        </ul>
+        <p class="font-body text-sm text-on-surface-variant leading-relaxed mt-3">Los tiempos del courier son estimados y ajenos a ielou.studio. Una vez despachado, te envío el número de seguimiento.</p>
+      </section>
+    </div>
+  </div>
 </main>
 
 <!-- ============ FOOTER ============ -->

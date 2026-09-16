@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tienda — ielou.studio</title>
-<meta name="description" content="Catálogo completo: pinturas, prints, timbres y objetos hechos a mano por ielou.studio.">
+<meta name="description" content="Catálogo completo: grabados, pinturas y serigrafías originales hechas a mano por Carola Sandoval.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -67,10 +67,9 @@
         </a>
         <div class="absolute left-0 top-full hidden group-hover:flex flex-col bg-white border border-outline-variant shadow-xl py-3 w-48 z-50 transition-all">
           <a href="tienda.html" class="px-5 py-2 text-xs font-semibold uppercase tracking-wider text-on-surface hover:bg-accent/30 hover:text-primary transition-colors">Ver todo</a>
+          <a href="tienda.html#grabados" class="px-5 py-2 text-xs uppercase tracking-wider text-on-surface-variant hover:bg-accent/30 hover:text-primary transition-colors">Grabados</a>
           <a href="tienda.html#pinturas" class="px-5 py-2 text-xs uppercase tracking-wider text-on-surface-variant hover:bg-accent/30 hover:text-primary transition-colors">Pinturas</a>
-          <a href="tienda.html#prints" class="px-5 py-2 text-xs uppercase tracking-wider text-on-surface-variant hover:bg-accent/30 hover:text-primary transition-colors">Prints</a>
-          <a href="tienda.html#timbres" class="px-5 py-2 text-xs uppercase tracking-wider text-on-surface-variant hover:bg-accent/30 hover:text-primary transition-colors">Timbres</a>
-          <a href="tienda.html#objetos" class="px-5 py-2 text-xs uppercase tracking-wider text-on-surface-variant hover:bg-accent/30 hover:text-primary transition-colors">Objetos</a>
+          <a href="tienda.html#serigrafias" class="px-5 py-2 text-xs uppercase tracking-wider text-on-surface-variant hover:bg-accent/30 hover:text-primary transition-colors">Serigrafías</a>
         </div>
       </div>
       <a href="portafolio.html" class="text-xs tracking-widest uppercase font-semibold font-body text-on-surface-variant hover:text-accent-dark transition-colors">Portafolio</a>
@@ -101,7 +100,7 @@
     <div class="max-w-4xl">
       <span class="font-body text-xs tracking-widest uppercase font-semibold text-on-surface-variant block mb-2">Catálogo de obras</span>
       <h1 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-primary leading-tight mb-3">Tienda</h1>
-      <p class="font-body text-sm sm:text-base text-on-surface-variant max-w-2xl leading-relaxed">Piezas únicas hechas a mano, artes visuales y diseño. Una selección curada de obra original, prints seriados, timbres y objetos de autor listos para despacho en Chile.</p>
+      <p class="font-body text-sm sm:text-base text-on-surface-variant max-w-2xl leading-relaxed">Grabados, pinturas y serigrafías originales, piezas únicas hechas a mano por Carola Sandoval. Cada obra es una pieza de edición limitada, lista para despacho en Chile.</p>
     </div>
   </header>
 
@@ -116,238 +115,472 @@
     <div class="flex flex-wrap items-center justify-between gap-4 pt-1">
       <div id="filter-pills" class="flex flex-wrap items-center gap-2" role="tablist">
         <button type="button" class="filter-pill px-5 py-2 rounded-full font-body text-xs font-bold tracking-wider uppercase transition-all bg-primary text-on-primary shadow-sm" data-category="todas">Todas las categorías</button>
+        <button type="button" class="filter-pill px-5 py-2 rounded-full font-body text-xs font-bold tracking-wider uppercase transition-all bg-neutral-100 text-on-surface-variant hover:bg-neutral-200" data-category="grabados">Grabados</button>
         <button type="button" class="filter-pill px-5 py-2 rounded-full font-body text-xs font-bold tracking-wider uppercase transition-all bg-neutral-100 text-on-surface-variant hover:bg-neutral-200" data-category="pinturas">Pinturas</button>
-        <button type="button" class="filter-pill px-5 py-2 rounded-full font-body text-xs font-bold tracking-wider uppercase transition-all bg-neutral-100 text-on-surface-variant hover:bg-neutral-200" data-category="prints">Prints &amp; Gráfica</button>
-        <button type="button" class="filter-pill px-5 py-2 rounded-full font-body text-xs font-bold tracking-wider uppercase transition-all bg-neutral-100 text-on-surface-variant hover:bg-neutral-200" data-category="timbres">Timbres</button>
-        <button type="button" class="filter-pill px-5 py-2 rounded-full font-body text-xs font-bold tracking-wider uppercase transition-all bg-neutral-100 text-on-surface-variant hover:bg-neutral-200" data-category="objetos">Objetos &amp; Cerámica</button>
+        <button type="button" class="filter-pill px-5 py-2 rounded-full font-body text-xs font-bold tracking-wider uppercase transition-all bg-neutral-100 text-on-surface-variant hover:bg-neutral-200" data-category="serigrafias">Serigrafías</button>
+        <button type="button" class="filter-pill px-5 py-2 rounded-full font-body text-xs font-bold tracking-wider uppercase transition-all bg-neutral-100 text-on-surface-variant hover:bg-neutral-200" data-category="proximamente">Próximamente</button>
       </div>
-      <div id="item-counter" class="font-body text-xs text-on-surface-variant">16 piezas disponibles en el taller</div>
+      <div id="item-counter" class="font-body text-xs text-on-surface-variant">41 piezas en el taller</div>
     </div>
   </section>
 
   <!-- ============ CATÁLOGO ============ -->
   <div id="catalog-container" class="px-6 md:px-16 lg:px-24 max-w-[1920px] mx-auto space-y-16">
 
+    <!-- Grabados -->
+    <section id="grabados" class="category-block" data-category-type="grabados">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 pb-3 border-b border-outline-variant gap-2">
+        <div>
+          <h2 class="font-heading text-2xl font-bold text-primary tracking-tight">Grabados</h2>
+          <p class="font-body text-sm text-on-surface-variant mt-1">Litografías, xilografías y grabados en relieve impresos a mano.</p>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10">
+        <article class="product-item flex flex-col group" data-tags="grabados litografía y acrílico" data-title="centro de información">
+          <div class="relative overflow-hidden bg-neutral-100 aspect-square mb-4 flex items-center justify-center">
+            <img alt="Centro de Información" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" src="img/productos/centro-de-informacion.jpg">
+            <span class="absolute top-3 left-3 bg-accent text-primary px-3 py-1 rounded-full font-body text-[10px] font-bold tracking-wider uppercase">Grabado</span>
+          </div>
+          <h3 class="font-heading font-semibold text-base text-primary mb-1">Centro de Información</h3>
+          <p class="font-body text-xs text-on-surface-variant line-clamp-2 mb-2 leading-relaxed">Litografía y acrílico · 70,5 x 50 cm (imagen 29 x 29 cm)</p>
+          <p class="font-heading font-bold text-sm text-primary mb-3 mt-auto">$70.000 CLP</p>
+          <div><a href="producto-centro-de-informacion.html" class="inline-block bg-primary text-on-primary hover:bg-accent hover:text-primary transition-colors rounded-full px-5 py-2 font-body text-[11px] font-bold tracking-wider uppercase">Ver obra</a></div>
+        </article>
+        <article class="product-item flex flex-col group" data-tags="grabados litografía y acrílico" data-title="helicobacter pylori">
+          <div class="relative overflow-hidden bg-neutral-100 aspect-square mb-4 flex items-center justify-center">
+            <img alt="Helicobacter Pylori" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" src="img/productos/helicobacter-pylori.jpg">
+            <span class="absolute top-3 left-3 bg-accent text-primary px-3 py-1 rounded-full font-body text-[10px] font-bold tracking-wider uppercase">Grabado</span>
+          </div>
+          <h3 class="font-heading font-semibold text-base text-primary mb-1">Helicobacter Pylori</h3>
+          <p class="font-body text-xs text-on-surface-variant line-clamp-2 mb-2 leading-relaxed">Litografía y acrílico · 70,5 x 50 cm (imagen 29 x 29 cm)</p>
+          <p class="font-heading font-bold text-sm text-primary mb-3 mt-auto">$60.000 CLP</p>
+          <div><a href="producto-helicobacter-pylori.html" class="inline-block bg-primary text-on-primary hover:bg-accent hover:text-primary transition-colors rounded-full px-5 py-2 font-body text-[11px] font-bold tracking-wider uppercase">Ver obra</a></div>
+        </article>
+        <article class="product-item flex flex-col group" data-tags="grabados xilografía y acrílico" data-title="luces interiores">
+          <div class="relative overflow-hidden bg-neutral-100 aspect-square mb-4 flex items-center justify-center">
+            <img alt="Luces Interiores" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" src="img/productos/luces-interiores.jpg">
+            <span class="absolute top-3 left-3 bg-accent text-primary px-3 py-1 rounded-full font-body text-[10px] font-bold tracking-wider uppercase">Grabado</span>
+          </div>
+          <h3 class="font-heading font-semibold text-base text-primary mb-1">Luces Interiores</h3>
+          <p class="font-body text-xs text-on-surface-variant line-clamp-2 mb-2 leading-relaxed">Xilografía y acrílico · 51 x 72 cm (imagen 59,5 x 45 cm)</p>
+          <p class="font-heading font-bold text-sm text-primary mb-3 mt-auto">$45.000 CLP</p>
+          <div><a href="producto-luces-interiores.html" class="inline-block bg-primary text-on-primary hover:bg-accent hover:text-primary transition-colors rounded-full px-5 py-2 font-body text-[11px] font-bold tracking-wider uppercase">Ver obra</a></div>
+        </article>
+        <article class="product-item flex flex-col group" data-tags="grabados xilografía y acrílico" data-title="bellosidades universales">
+          <div class="relative overflow-hidden bg-neutral-100 aspect-square mb-4 flex items-center justify-center">
+            <img alt="Bellosidades Universales" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" src="img/productos/bellosidades-universales.jpg">
+            <span class="absolute top-3 left-3 bg-accent text-primary px-3 py-1 rounded-full font-body text-[10px] font-bold tracking-wider uppercase">Grabado</span>
+          </div>
+          <h3 class="font-heading font-semibold text-base text-primary mb-1">Bellosidades Universales</h3>
+          <p class="font-body text-xs text-on-surface-variant line-clamp-2 mb-2 leading-relaxed">Xilografía y acrílico · 74,5 x 56 cm (imagen 59,5 x 45 cm)</p>
+          <p class="font-heading font-bold text-sm text-primary mb-3 mt-auto">$45.000 CLP</p>
+          <div><a href="producto-bellosidades-universales.html" class="inline-block bg-primary text-on-primary hover:bg-accent hover:text-primary transition-colors rounded-full px-5 py-2 font-body text-[11px] font-bold tracking-wider uppercase">Ver obra</a></div>
+        </article>
+        <article class="product-item flex flex-col group" data-tags="grabados impronta en relieve" data-title="curcubita pepo l., citrus limonum y cucumis sativus i">
+          <div class="relative overflow-hidden bg-neutral-100 aspect-square mb-4 flex items-center justify-center">
+            <img alt="Curcubita Pepo L., Citrus Limonum y Cucumis Sativus I" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" src="img/productos/curcubita-pepo-i.jpg">
+            <span class="absolute top-3 left-3 bg-accent text-primary px-3 py-1 rounded-full font-body text-[10px] font-bold tracking-wider uppercase">Grabado</span>
+          </div>
+          <h3 class="font-heading font-semibold text-base text-primary mb-1">Curcubita Pepo L., Citrus Limonum y Cucumis Sativus I</h3>
+          <p class="font-body text-xs text-on-surface-variant line-clamp-2 mb-2 leading-relaxed">Impronta en relieve · 28 x 31 cm (imagen 19 x 18 cm)</p>
+          <p class="font-heading font-bold text-sm text-primary mb-3 mt-auto">$20.000 CLP</p>
+          <div><a href="producto-curcubita-pepo-i.html" class="inline-block bg-primary text-on-primary hover:bg-accent hover:text-primary transition-colors rounded-full px-5 py-2 font-body text-[11px] font-bold tracking-wider uppercase">Ver obra</a></div>
+        </article>
+        <article class="product-item flex flex-col group" data-tags="grabados impronta en relieve" data-title="curcubita pepo l., citrus limonum y cucumis sativus ii">
+          <div class="relative overflow-hidden bg-neutral-100 aspect-square mb-4 flex items-center justify-center">
+            <img alt="Curcubita Pepo L., Citrus Limonum y Cucumis Sativus II" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" src="img/productos/curcubita-pepo-ii.jpg">
+            <span class="absolute top-3 left-3 bg-accent text-primary px-3 py-1 rounded-full font-body text-[10px] font-bold tracking-wider uppercase">Grabado</span>
+          </div>
+          <h3 class="font-heading font-semibold text-base text-primary mb-1">Curcubita Pepo L., Citrus Limonum y Cucumis Sativus II</h3>
+          <p class="font-body text-xs text-on-surface-variant line-clamp-2 mb-2 leading-relaxed">Impronta en relieve · 15,5 x 21 cm (imagen 20 x 15 cm)</p>
+          <p class="font-heading font-bold text-sm text-primary mb-3 mt-auto">$15.000 CLP</p>
+          <div><a href="producto-curcubita-pepo-ii.html" class="inline-block bg-primary text-on-primary hover:bg-accent hover:text-primary transition-colors rounded-full px-5 py-2 font-body text-[11px] font-bold tracking-wider uppercase">Ver obra</a></div>
+        </article>
+        <article class="product-item flex flex-col group" data-tags="grabados impronta en relieve" data-title="curcubita pepo l., citrus limonum y cucumis sativus iii">
+          <div class="relative overflow-hidden bg-neutral-100 aspect-square mb-4 flex items-center justify-center">
+            <img alt="Curcubita Pepo L., Citrus Limonum y Cucumis Sativus III" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" src="img/productos/curcubita-pepo-iii.jpg">
+            <span class="absolute top-3 left-3 bg-accent text-primary px-3 py-1 rounded-full font-body text-[10px] font-bold tracking-wider uppercase">Grabado</span>
+          </div>
+          <h3 class="font-heading font-semibold text-base text-primary mb-1">Curcubita Pepo L., Citrus Limonum y Cucumis Sativus III</h3>
+          <p class="font-body text-xs text-on-surface-variant line-clamp-2 mb-2 leading-relaxed">Impronta en relieve · 13,5 x 25,5 cm (imagen 20 x 7 cm)</p>
+          <p class="font-heading font-bold text-sm text-primary mb-3 mt-auto">$20.000 CLP</p>
+          <div><a href="producto-curcubita-pepo-iii.html" class="inline-block bg-primary text-on-primary hover:bg-accent hover:text-primary transition-colors rounded-full px-5 py-2 font-body text-[11px] font-bold tracking-wider uppercase">Ver obra</a></div>
+        </article>
+        <article class="product-item flex flex-col group" data-tags="grabados agua fuerte" data-title="tres murmullos">
+          <div class="relative overflow-hidden bg-neutral-100 aspect-square mb-4 flex items-center justify-center">
+            <img alt="Tres Murmullos" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" src="img/productos/tres-murmullos.jpg">
+            <span class="absolute top-3 left-3 bg-accent text-primary px-3 py-1 rounded-full font-body text-[10px] font-bold tracking-wider uppercase">Grabado</span>
+          </div>
+          <h3 class="font-heading font-semibold text-base text-primary mb-1">Tres Murmullos</h3>
+          <p class="font-body text-xs text-on-surface-variant line-clamp-2 mb-2 leading-relaxed">Agua fuerte · 13 x 25 x 4 cm (enmarcado)</p>
+          <p class="font-heading font-bold text-sm text-primary mb-3 mt-auto">$65.000 CLP</p>
+          <div><a href="producto-tres-murmullos.html" class="inline-block bg-primary text-on-primary hover:bg-accent hover:text-primary transition-colors rounded-full px-5 py-2 font-body text-[11px] font-bold tracking-wider uppercase">Ver obra</a></div>
+        </article>
+        <article class="product-item flex flex-col group" data-tags="grabados litografía" data-title="look and feel">
+          <div class="relative overflow-hidden bg-neutral-100 aspect-square mb-4 flex items-center justify-center">
+            <img alt="Look and Feel" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" src="img/productos/look-and-feel.jpg">
+            <span class="absolute top-3 left-3 bg-accent text-primary px-3 py-1 rounded-full font-body text-[10px] font-bold tracking-wider uppercase">Grabado</span>
+          </div>
+          <h3 class="font-heading font-semibold text-base text-primary mb-1">Look and Feel</h3>
+          <p class="font-body text-xs text-on-surface-variant line-clamp-2 mb-2 leading-relaxed">Litografía · 20 x 28,5 cm</p>
+          <p class="font-heading font-bold text-sm text-primary mb-3 mt-auto">$40.000 CLP</p>
+          <div><a href="producto-look-and-feel.html" class="inline-block bg-primary text-on-primary hover:bg-accent hover:text-primary transition-colors rounded-full px-5 py-2 font-body text-[11px] font-bold tracking-wider uppercase">Ver obra</a></div>
+        </article>
+        <article class="product-item flex flex-col group" data-tags="grabados grabado en plancha offset" data-title="iguana">
+          <div class="relative overflow-hidden bg-neutral-100 aspect-square mb-4 flex items-center justify-center">
+            <img alt="Iguana" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" src="img/productos/iguana.jpg">
+            <span class="absolute top-3 left-3 bg-accent text-primary px-3 py-1 rounded-full font-body text-[10px] font-bold tracking-wider uppercase">Grabado</span>
+          </div>
+          <h3 class="font-heading font-semibold text-base text-primary mb-1">Iguana</h3>
+          <p class="font-body text-xs text-on-surface-variant line-clamp-2 mb-2 leading-relaxed">Grabado en plancha offset · 19 x 27 cm (imagen 20 x 15 cm)</p>
+          <p class="font-heading font-bold text-sm text-primary mb-3 mt-auto">$30.000 CLP</p>
+          <div><a href="producto-iguana.html" class="inline-block bg-primary text-on-primary hover:bg-accent hover:text-primary transition-colors rounded-full px-5 py-2 font-body text-[11px] font-bold tracking-wider uppercase">Ver obra</a></div>
+        </article>
+        <article class="product-item flex flex-col group" data-tags="grabados xilografía" data-title="look at the cat">
+          <div class="relative overflow-hidden bg-neutral-100 aspect-square mb-4 flex items-center justify-center">
+            <img alt="Look at the Cat" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" src="img/productos/look-at-the-cat.jpg">
+            <span class="absolute top-3 left-3 bg-accent text-primary px-3 py-1 rounded-full font-body text-[10px] font-bold tracking-wider uppercase">Grabado</span>
+          </div>
+          <h3 class="font-heading font-semibold text-base text-primary mb-1">Look at the Cat</h3>
+          <p class="font-body text-xs text-on-surface-variant line-clamp-2 mb-2 leading-relaxed">Xilografía · 18 x 23 x 8 cm</p>
+          <p class="font-heading font-bold text-sm text-primary mb-3 mt-auto">$30.000 CLP</p>
+          <div><a href="producto-look-at-the-cat.html" class="inline-block bg-primary text-on-primary hover:bg-accent hover:text-primary transition-colors rounded-full px-5 py-2 font-body text-[11px] font-bold tracking-wider uppercase">Ver obra</a></div>
+        </article>
+      </div>
+    </section>
+
     <!-- Pinturas -->
     <section id="pinturas" class="category-block" data-category-type="pinturas">
       <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 pb-3 border-b border-outline-variant gap-2">
         <div>
           <h2 class="font-heading text-2xl font-bold text-primary tracking-tight">Pinturas</h2>
-          <p class="font-body text-sm text-on-surface-variant mt-1">Obras originales en acrílico, óleo y técnicas mixtas sobre lienzo y papel.</p>
+          <p class="font-body text-sm text-on-surface-variant mt-1">Óleos y acrílicos originales sobre papel, tela y madera.</p>
         </div>
-        <button type="button" class="category-see-more font-body text-xs tracking-widest uppercase font-semibold text-primary hover:text-accent-dark transition-colors flex items-center gap-1.5" data-target-category="pinturas">
-          Ver todas las pinturas
-          <span class="material-symbols-outlined text-base">arrow_forward</span>
-        </button>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10">
-        <article class="product-item flex flex-col group" data-tags="pintura acrilico lienzo" data-title="estudio en rojo">
+        <article class="product-item flex flex-col group" data-tags="pinturas óleo en papel" data-title="la gente i">
           <div class="relative overflow-hidden bg-neutral-100 aspect-square mb-4 flex items-center justify-center">
-            <img alt="Estudio en Rojo" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" src="img/productos/estudio-en-rojo.jpg">
+            <img alt="La Gente I" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" src="img/productos/la-gente-i.jpg">
             <span class="absolute top-3 left-3 bg-accent text-primary px-3 py-1 rounded-full font-body text-[10px] font-bold tracking-wider uppercase">Pintura</span>
+          </div>
+          <h3 class="font-heading font-semibold text-base text-primary mb-1">La Gente I</h3>
+          <p class="font-body text-xs text-on-surface-variant line-clamp-2 mb-2 leading-relaxed">Óleo en papel · 41 x 29,5 cm (imagen 33 x 22,5 cm)</p>
+          <p class="font-heading font-bold text-sm text-primary mb-3 mt-auto">$20.000 CLP</p>
+          <div><a href="producto-la-gente-i.html" class="inline-block bg-primary text-on-primary hover:bg-accent hover:text-primary transition-colors rounded-full px-5 py-2 font-body text-[11px] font-bold tracking-wider uppercase">Ver obra</a></div>
+        </article>
+        <article class="product-item flex flex-col group" data-tags="pinturas óleo en papel" data-title="la gente ii">
+          <div class="relative overflow-hidden bg-neutral-100 aspect-square mb-4 flex items-center justify-center">
+            <img alt="La Gente II" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" src="img/productos/la-gente-ii.jpg">
+            <span class="absolute top-3 left-3 bg-accent text-primary px-3 py-1 rounded-full font-body text-[10px] font-bold tracking-wider uppercase">Pintura</span>
+          </div>
+          <h3 class="font-heading font-semibold text-base text-primary mb-1">La Gente II</h3>
+          <p class="font-body text-xs text-on-surface-variant line-clamp-2 mb-2 leading-relaxed">Óleo en papel · 40,5 x 29,5 cm (imagen 27 x 24 cm)</p>
+          <p class="font-heading font-bold text-sm text-primary mb-3 mt-auto">$20.000 CLP</p>
+          <div><a href="producto-la-gente-ii.html" class="inline-block bg-primary text-on-primary hover:bg-accent hover:text-primary transition-colors rounded-full px-5 py-2 font-body text-[11px] font-bold tracking-wider uppercase">Ver obra</a></div>
+        </article>
+        <article class="product-item flex flex-col group" data-tags="pinturas óleo en papel" data-title="la gente iii">
+          <div class="relative overflow-hidden bg-neutral-100 aspect-square mb-4 flex items-center justify-center">
+            <img alt="La Gente III" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" src="img/productos/la-gente-iii.jpg">
+            <span class="absolute top-3 left-3 bg-accent text-primary px-3 py-1 rounded-full font-body text-[10px] font-bold tracking-wider uppercase">Pintura</span>
+          </div>
+          <h3 class="font-heading font-semibold text-base text-primary mb-1">La Gente III</h3>
+          <p class="font-body text-xs text-on-surface-variant line-clamp-2 mb-2 leading-relaxed">Óleo en papel · 50 x 34,5 cm (imagen 48 x 28 cm)</p>
+          <p class="font-heading font-bold text-sm text-primary mb-3 mt-auto">$20.000 CLP</p>
+          <div><a href="producto-la-gente-iii.html" class="inline-block bg-primary text-on-primary hover:bg-accent hover:text-primary transition-colors rounded-full px-5 py-2 font-body text-[11px] font-bold tracking-wider uppercase">Ver obra</a></div>
+        </article>
+        <article class="product-item flex flex-col group" data-tags="pinturas óleo en papel" data-title="la gente iv">
+          <div class="relative overflow-hidden bg-neutral-100 aspect-square mb-4 flex items-center justify-center">
+            <img alt="La Gente IV" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" src="img/productos/la-gente-iv.jpg">
+            <span class="absolute top-3 left-3 bg-accent text-primary px-3 py-1 rounded-full font-body text-[10px] font-bold tracking-wider uppercase">Pintura</span>
+          </div>
+          <h3 class="font-heading font-semibold text-base text-primary mb-1">La Gente IV</h3>
+          <p class="font-body text-xs text-on-surface-variant line-clamp-2 mb-2 leading-relaxed">Óleo en papel · 51,5 x 32,5 cm (imagen 51 x 30 cm)</p>
+          <p class="font-heading font-bold text-sm text-primary mb-3 mt-auto">$20.000 CLP</p>
+          <div><a href="producto-la-gente-iv.html" class="inline-block bg-primary text-on-primary hover:bg-accent hover:text-primary transition-colors rounded-full px-5 py-2 font-body text-[11px] font-bold tracking-wider uppercase">Ver obra</a></div>
+        </article>
+        <article class="product-item flex flex-col group" data-tags="pinturas óleo en papel" data-title="la gente v">
+          <div class="relative overflow-hidden bg-neutral-100 aspect-square mb-4 flex items-center justify-center">
+            <img alt="La Gente V" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" src="img/productos/la-gente-v.jpg">
+            <span class="absolute top-3 left-3 bg-accent text-primary px-3 py-1 rounded-full font-body text-[10px] font-bold tracking-wider uppercase">Pintura</span>
+          </div>
+          <h3 class="font-heading font-semibold text-base text-primary mb-1">La Gente V</h3>
+          <p class="font-body text-xs text-on-surface-variant line-clamp-2 mb-2 leading-relaxed">Óleo en papel · 27,5 x 38,5 cm (imagen 34,5 x 27,5 cm)</p>
+          <p class="font-heading font-bold text-sm text-primary mb-3 mt-auto">$10.000 CLP</p>
+          <div><a href="producto-la-gente-v.html" class="inline-block bg-primary text-on-primary hover:bg-accent hover:text-primary transition-colors rounded-full px-5 py-2 font-body text-[11px] font-bold tracking-wider uppercase">Ver obra</a></div>
+        </article>
+        <article class="product-item flex flex-col group" data-tags="pinturas óleo a papel" data-title="cotidianos i">
+          <div class="relative overflow-hidden bg-neutral-100 aspect-square mb-4 flex items-center justify-center">
+            <img alt="Cotidianos I" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" src="img/productos/cotidianos-i.jpg">
+            <span class="absolute top-3 left-3 bg-accent text-primary px-3 py-1 rounded-full font-body text-[10px] font-bold tracking-wider uppercase">Pintura</span>
+          </div>
+          <h3 class="font-heading font-semibold text-base text-primary mb-1">Cotidianos I</h3>
+          <p class="font-body text-xs text-on-surface-variant line-clamp-2 mb-2 leading-relaxed">Óleo a papel · 36,5 x 37,5 cm (imagen 35,5 x 36 cm)</p>
+          <p class="font-heading font-bold text-sm text-primary mb-3 mt-auto">$15.000 CLP</p>
+          <div><a href="producto-cotidianos-i.html" class="inline-block bg-primary text-on-primary hover:bg-accent hover:text-primary transition-colors rounded-full px-5 py-2 font-body text-[11px] font-bold tracking-wider uppercase">Ver obra</a></div>
+        </article>
+        <article class="product-item flex flex-col group" data-tags="pinturas óleo a papel" data-title="cotidianos ii">
+          <div class="relative overflow-hidden bg-neutral-100 aspect-square mb-4 flex items-center justify-center">
+            <img alt="Cotidianos II" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" src="img/productos/cotidianos-ii.jpg">
+            <span class="absolute top-3 left-3 bg-accent text-primary px-3 py-1 rounded-full font-body text-[10px] font-bold tracking-wider uppercase">Pintura</span>
+          </div>
+          <h3 class="font-heading font-semibold text-base text-primary mb-1">Cotidianos II</h3>
+          <p class="font-body text-xs text-on-surface-variant line-clamp-2 mb-2 leading-relaxed">Óleo a papel · 36 x 37,5 cm (imagen 33 x 34 cm)</p>
+          <p class="font-heading font-bold text-sm text-primary mb-3 mt-auto">$15.000 CLP</p>
+          <div><a href="producto-cotidianos-ii.html" class="inline-block bg-primary text-on-primary hover:bg-accent hover:text-primary transition-colors rounded-full px-5 py-2 font-body text-[11px] font-bold tracking-wider uppercase">Ver obra</a></div>
+        </article>
+        <article class="product-item flex flex-col group" data-tags="pinturas acrílico sobre madera entelada" data-title="tetrix colors i">
+          <div class="relative overflow-hidden bg-neutral-100 aspect-square mb-4 flex items-center justify-center">
+            <img alt="Tetrix Colors I" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" src="img/productos/tetrix-colors-i.jpg">
+            <span class="absolute top-3 left-3 bg-accent text-primary px-3 py-1 rounded-full font-body text-[10px] font-bold tracking-wider uppercase">Vendido</span>
+          </div>
+          <h3 class="font-heading font-semibold text-base text-primary mb-1">Tetrix Colors I</h3>
+          <p class="font-body text-xs text-on-surface-variant line-clamp-2 mb-2 leading-relaxed">Acrílico sobre madera entelada · 50 x 51 cm (considerar peso)</p>
+          <p class="font-heading font-bold text-sm text-primary mb-3 mt-auto">$30.000 CLP</p>
+          <div><a href="producto-tetrix-colors-i.html" class="inline-block bg-neutral-200 text-on-surface-variant transition-colors rounded-full px-5 py-2 font-body text-[11px] font-bold tracking-wider uppercase">Vendido</a></div>
+        </article>
+        <article class="product-item flex flex-col group" data-tags="pinturas acrílico sobre madera entelada" data-title="tetrix colors ii">
+          <div class="relative overflow-hidden bg-neutral-100 aspect-square mb-4 flex items-center justify-center">
+            <img alt="Tetrix Colors II" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" src="img/productos/tetrix-colors-ii.jpg">
+            <span class="absolute top-3 left-3 bg-accent text-primary px-3 py-1 rounded-full font-body text-[10px] font-bold tracking-wider uppercase">Vendido</span>
+          </div>
+          <h3 class="font-heading font-semibold text-base text-primary mb-1">Tetrix Colors II</h3>
+          <p class="font-body text-xs text-on-surface-variant line-clamp-2 mb-2 leading-relaxed">Acrílico sobre madera entelada · 50 x 51 cm (considerar peso)</p>
+          <p class="font-heading font-bold text-sm text-primary mb-3 mt-auto">$30.000 CLP</p>
+          <div><a href="producto-tetrix-colors-ii.html" class="inline-block bg-neutral-200 text-on-surface-variant transition-colors rounded-full px-5 py-2 font-body text-[11px] font-bold tracking-wider uppercase">Vendido</a></div>
+        </article>
+        <article class="product-item flex flex-col group" data-tags="pinturas acrílico sobre madera entelada" data-title="tetrix colors iii">
+          <div class="relative overflow-hidden bg-neutral-100 aspect-square mb-4 flex items-center justify-center">
+            <img alt="Tetrix Colors III" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" src="img/productos/tetrix-colors-iii.jpg">
+            <span class="absolute top-3 left-3 bg-accent text-primary px-3 py-1 rounded-full font-body text-[10px] font-bold tracking-wider uppercase">Vendido</span>
+          </div>
+          <h3 class="font-heading font-semibold text-base text-primary mb-1">Tetrix Colors III</h3>
+          <p class="font-body text-xs text-on-surface-variant line-clamp-2 mb-2 leading-relaxed">Acrílico sobre madera entelada · 50 x 51 cm (considerar peso)</p>
+          <p class="font-heading font-bold text-sm text-primary mb-3 mt-auto">$30.000 CLP</p>
+          <div><a href="producto-tetrix-colors-iii.html" class="inline-block bg-neutral-200 text-on-surface-variant transition-colors rounded-full px-5 py-2 font-body text-[11px] font-bold tracking-wider uppercase">Vendido</a></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Serigrafías -->
+    <section id="serigrafias" class="category-block" data-category-type="serigrafias">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 pb-3 border-b border-outline-variant gap-2">
+        <div>
+          <h2 class="font-heading text-2xl font-bold text-primary tracking-tight">Serigrafías</h2>
+          <p class="font-body text-sm text-on-surface-variant mt-1">Impresiones serigráficas de tiraje limitado sobre papel.</p>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10">
+        <article class="product-item flex flex-col group" data-tags="serigrafias serigrafía" data-title="look at the roses">
+          <div class="relative overflow-hidden bg-neutral-100 aspect-square mb-4 flex items-center justify-center">
+            <img alt="Look at the Roses" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" src="img/productos/look-at-the-roses.jpg">
+            <span class="absolute top-3 left-3 bg-accent text-primary px-3 py-1 rounded-full font-body text-[10px] font-bold tracking-wider uppercase">Serigrafía</span>
+          </div>
+          <h3 class="font-heading font-semibold text-base text-primary mb-1">Look at the Roses</h3>
+          <p class="font-body text-xs text-on-surface-variant line-clamp-2 mb-2 leading-relaxed">Serigrafía · 15 x 22 cm</p>
+          <p class="font-heading font-bold text-sm text-primary mb-3 mt-auto">$30.000 CLP</p>
+          <div><a href="producto-look-at-the-roses.html" class="inline-block bg-primary text-on-primary hover:bg-accent hover:text-primary transition-colors rounded-full px-5 py-2 font-body text-[11px] font-bold tracking-wider uppercase">Ver obra</a></div>
+        </article>
+        <article class="product-item flex flex-col group" data-tags="serigrafias serigrafía" data-title="don&#x27;t look at me">
+          <div class="relative overflow-hidden bg-neutral-100 aspect-square mb-4 flex items-center justify-center">
+            <img alt="Don&#x27;t Look at Me" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" src="img/productos/dont-look-at-me.jpg">
+            <span class="absolute top-3 left-3 bg-accent text-primary px-3 py-1 rounded-full font-body text-[10px] font-bold tracking-wider uppercase">Serigrafía</span>
+          </div>
+          <h3 class="font-heading font-semibold text-base text-primary mb-1">Don&#x27;t Look at Me</h3>
+          <p class="font-body text-xs text-on-surface-variant line-clamp-2 mb-2 leading-relaxed">Serigrafía · 15 x 22 cm</p>
+          <p class="font-heading font-bold text-sm text-primary mb-3 mt-auto">$30.000 CLP</p>
+          <div><a href="producto-dont-look-at-me.html" class="inline-block bg-primary text-on-primary hover:bg-accent hover:text-primary transition-colors rounded-full px-5 py-2 font-body text-[11px] font-bold tracking-wider uppercase">Ver obra</a></div>
+        </article>
+        <article class="product-item flex flex-col group" data-tags="serigrafias serigrafía" data-title="look at her well">
+          <div class="relative overflow-hidden bg-neutral-100 aspect-square mb-4 flex items-center justify-center">
+            <img alt="Look at Her Well" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" src="img/productos/look-at-her-well.jpg">
+            <span class="absolute top-3 left-3 bg-accent text-primary px-3 py-1 rounded-full font-body text-[10px] font-bold tracking-wider uppercase">Serigrafía</span>
+          </div>
+          <h3 class="font-heading font-semibold text-base text-primary mb-1">Look at Her Well</h3>
+          <p class="font-body text-xs text-on-surface-variant line-clamp-2 mb-2 leading-relaxed">Serigrafía · 15 x 21 cm (imagen 13 x 19,5 cm)</p>
+          <p class="font-heading font-bold text-sm text-primary mb-3 mt-auto">$30.000 CLP</p>
+          <div><a href="producto-look-at-her-well.html" class="inline-block bg-primary text-on-primary hover:bg-accent hover:text-primary transition-colors rounded-full px-5 py-2 font-body text-[11px] font-bold tracking-wider uppercase">Ver obra</a></div>
+        </article>
+        <article class="product-item flex flex-col group" data-tags="serigrafias serigrafía" data-title="liliaceae (de la familia)">
+          <div class="relative overflow-hidden bg-neutral-100 aspect-square mb-4 flex items-center justify-center">
+            <img alt="Liliaceae (de la familia)" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" src="img/productos/liliaceae.jpg">
+            <span class="absolute top-3 left-3 bg-accent text-primary px-3 py-1 rounded-full font-body text-[10px] font-bold tracking-wider uppercase">Serigrafía</span>
+          </div>
+          <h3 class="font-heading font-semibold text-base text-primary mb-1">Liliaceae (de la familia)</h3>
+          <p class="font-body text-xs text-on-surface-variant line-clamp-2 mb-2 leading-relaxed">Serigrafía · 27,5 x 38 cm (imagen 30 x 23 cm)</p>
+          <p class="font-heading font-bold text-sm text-primary mb-3 mt-auto">$25.000 CLP</p>
+          <div><a href="producto-liliaceae.html" class="inline-block bg-primary text-on-primary hover:bg-accent hover:text-primary transition-colors rounded-full px-5 py-2 font-body text-[11px] font-bold tracking-wider uppercase">Ver obra</a></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Próximamente -->
+    <section id="proximamente" class="category-block" data-category-type="proximamente">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 pb-3 border-b border-outline-variant gap-2">
+        <div>
+          <h2 class="font-heading text-2xl font-bold text-primary tracking-tight">Próximamente</h2>
+          <p class="font-body text-sm text-on-surface-variant mt-1">Piezas de muestra del proyecto — nuevas categorías (pintura en lienzo, timbres y cerámica) llegarán más adelante.</p>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10">
+        <article class="product-item flex flex-col group opacity-70" data-tags="proximamente estudio en rojo" data-title="estudio en rojo">
+          <div class="relative overflow-hidden bg-neutral-100 aspect-square mb-4 flex items-center justify-center">
+            <img alt="Estudio en Rojo" class="object-cover w-full h-full grayscale-[30%]" src="img/productos/estudio-en-rojo.jpg">
+            <span class="absolute top-3 left-3 bg-neutral-800 text-white px-3 py-1 rounded-full font-body text-[10px] font-bold tracking-wider uppercase">Próximamente</span>
           </div>
           <h3 class="font-heading font-semibold text-base text-primary mb-1">Estudio en Rojo</h3>
           <p class="font-body text-xs text-on-surface-variant line-clamp-2 mb-2 leading-relaxed">Obra original en acrílico sobre lienzo con trazos expresivos y minimalistas.</p>
           <p class="font-heading font-bold text-sm text-primary mb-3 mt-auto">$120.000 CLP</p>
-          <div><a href="producto.html" class="inline-block bg-primary text-on-primary hover:bg-accent hover:text-primary transition-colors rounded-full px-5 py-2 font-body text-[11px] font-bold tracking-wider uppercase">Comprar</a></div>
+          <div><span class="inline-block bg-neutral-200 text-on-surface-variant rounded-full px-5 py-2 font-body text-[11px] font-bold tracking-wider uppercase cursor-not-allowed">Próximamente</span></div>
         </article>
-        <article class="product-item flex flex-col group" data-tags="pintura acrilico mixto lienzo" data-title="ecos del vacio">
+        <article class="product-item flex flex-col group opacity-70" data-tags="proximamente ecos del vacío" data-title="ecos del vacío">
           <div class="relative overflow-hidden bg-neutral-100 aspect-square mb-4 flex items-center justify-center">
-            <img alt="Ecos del Vacío" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" src="img/portafolio/ecos-del-vacio.jpg">
-            <span class="absolute top-3 left-3 bg-accent text-primary px-3 py-1 rounded-full font-body text-[10px] font-bold tracking-wider uppercase">Pintura</span>
+            <img alt="Ecos del Vacío" class="object-cover w-full h-full grayscale-[30%]" src="img/portafolio/ecos-del-vacio.jpg">
+            <span class="absolute top-3 left-3 bg-neutral-800 text-white px-3 py-1 rounded-full font-body text-[10px] font-bold tracking-wider uppercase">Próximamente</span>
           </div>
           <h3 class="font-heading font-semibold text-base text-primary mb-1">Ecos del Vacío</h3>
           <p class="font-body text-xs text-on-surface-variant line-clamp-2 mb-2 leading-relaxed">Exploración textural utilizando acrílico y medios mixtos sobre lienzo de gran formato.</p>
           <p class="font-heading font-bold text-sm text-primary mb-3 mt-auto">$135.000 CLP</p>
-          <div><a href="producto.html" class="inline-block bg-primary text-on-primary hover:bg-accent hover:text-primary transition-colors rounded-full px-5 py-2 font-body text-[11px] font-bold tracking-wider uppercase">Comprar</a></div>
+          <div><span class="inline-block bg-neutral-200 text-on-surface-variant rounded-full px-5 py-2 font-body text-[11px] font-bold tracking-wider uppercase cursor-not-allowed">Próximamente</span></div>
         </article>
-        <article class="product-item flex flex-col group" data-tags="pintura luz luminico lienzo" data-title="fragmentos de luz">
+        <article class="product-item flex flex-col group opacity-70" data-tags="proximamente fragmentos de luz" data-title="fragmentos de luz">
           <div class="relative overflow-hidden bg-neutral-100 aspect-square mb-4 flex items-center justify-center">
-            <img alt="Fragmentos de Luz" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" src="img/portafolio/fragmentos-de-luz.jpg">
-            <span class="absolute top-3 left-3 bg-accent text-primary px-3 py-1 rounded-full font-body text-[10px] font-bold tracking-wider uppercase">Pintura</span>
+            <img alt="Fragmentos de Luz" class="object-cover w-full h-full grayscale-[30%]" src="img/portafolio/fragmentos-de-luz.jpg">
+            <span class="absolute top-3 left-3 bg-neutral-800 text-white px-3 py-1 rounded-full font-body text-[10px] font-bold tracking-wider uppercase">Próximamente</span>
           </div>
           <h3 class="font-heading font-semibold text-base text-primary mb-1">Fragmentos de Luz</h3>
           <p class="font-body text-xs text-on-surface-variant line-clamp-2 mb-2 leading-relaxed">Composiciones donde la luz interviene como un elemento constructivo y dinámico de la obra.</p>
           <p class="font-heading font-bold text-sm text-primary mb-3 mt-auto">$98.000 CLP</p>
-          <div><a href="producto.html" class="inline-block bg-primary text-on-primary hover:bg-accent hover:text-primary transition-colors rounded-full px-5 py-2 font-body text-[11px] font-bold tracking-wider uppercase">Comprar</a></div>
+          <div><span class="inline-block bg-neutral-200 text-on-surface-variant rounded-full px-5 py-2 font-body text-[11px] font-bold tracking-wider uppercase cursor-not-allowed">Próximamente</span></div>
         </article>
-        <article class="product-item flex flex-col group" data-tags="pintura carbon acrilico lino" data-title="materia sombra">
+        <article class="product-item flex flex-col group opacity-70" data-tags="proximamente materia sombra" data-title="materia sombra">
           <div class="relative overflow-hidden bg-neutral-100 aspect-square mb-4 flex items-center justify-center">
-            <img alt="Materia Sombra" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" src="img/productos/materia-sombra.jpg">
-            <span class="absolute top-3 left-3 bg-accent text-primary px-3 py-1 rounded-full font-body text-[10px] font-bold tracking-wider uppercase">Pintura</span>
+            <img alt="Materia Sombra" class="object-cover w-full h-full grayscale-[30%]" src="img/productos/materia-sombra.jpg">
+            <span class="absolute top-3 left-3 bg-neutral-800 text-white px-3 py-1 rounded-full font-body text-[10px] font-bold tracking-wider uppercase">Próximamente</span>
           </div>
           <h3 class="font-heading font-semibold text-base text-primary mb-1">Materia Sombra</h3>
           <p class="font-body text-xs text-on-surface-variant line-clamp-2 mb-2 leading-relaxed">Acrílico y carbón vegetal sobre tela de lino crudo en formato mediano.</p>
           <p class="font-heading font-bold text-sm text-primary mb-3 mt-auto">$110.000 CLP</p>
-          <div><a href="producto.html" class="inline-block bg-primary text-on-primary hover:bg-accent hover:text-primary transition-colors rounded-full px-5 py-2 font-body text-[11px] font-bold tracking-wider uppercase">Comprar</a></div>
+          <div><span class="inline-block bg-neutral-200 text-on-surface-variant rounded-full px-5 py-2 font-body text-[11px] font-bold tracking-wider uppercase cursor-not-allowed">Próximamente</span></div>
         </article>
-      </div>
-    </section>
-
-    <!-- Prints & Gráfica -->
-    <section id="prints" class="category-block" data-category-type="prints">
-      <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 pb-3 border-b border-outline-variant gap-2">
-        <div>
-          <h2 class="font-heading text-2xl font-bold text-primary tracking-tight">Prints &amp; Gráfica</h2>
-          <p class="font-body text-sm text-on-surface-variant mt-1">Láminas de arte seriadas, grabados en linóleo y serigrafías de tiraje limitado.</p>
-        </div>
-        <button type="button" class="category-see-more font-body text-xs tracking-widest uppercase font-semibold text-primary hover:text-accent-dark transition-colors flex items-center gap-1.5" data-target-category="prints">
-          Ver todos los prints
-          <span class="material-symbols-outlined text-base">arrow_forward</span>
-        </button>
-      </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10">
-        <article class="product-item flex flex-col group" data-tags="print generativo afiche grafica" data-title="composicion visual 01">
+        <article class="product-item flex flex-col group opacity-70" data-tags="proximamente composición visual 01" data-title="composición visual 01">
           <div class="relative overflow-hidden bg-neutral-100 aspect-square mb-4 flex items-center justify-center">
-            <img alt="Composición Visual 01" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" src="img/productos/composicion-visual-01.jpg">
-            <span class="absolute top-3 left-3 bg-accent text-primary px-3 py-1 rounded-full font-body text-[10px] font-bold tracking-wider uppercase">Print</span>
+            <img alt="Composición Visual 01" class="object-cover w-full h-full grayscale-[30%]" src="img/productos/composicion-visual-01.jpg">
+            <span class="absolute top-3 left-3 bg-neutral-800 text-white px-3 py-1 rounded-full font-body text-[10px] font-bold tracking-wider uppercase">Próximamente</span>
           </div>
           <h3 class="font-heading font-semibold text-base text-primary mb-1">Composición Visual 01</h3>
           <p class="font-body text-xs text-on-surface-variant line-clamp-2 mb-2 leading-relaxed">Lámina de arte generativo con contrastes geométricos y acentos vibrantes.</p>
           <p class="font-heading font-bold text-sm text-primary mb-3 mt-auto">$25.000 CLP</p>
-          <div><a href="producto.html" class="inline-block bg-primary text-on-primary hover:bg-accent hover:text-primary transition-colors rounded-full px-5 py-2 font-body text-[11px] font-bold tracking-wider uppercase">Comprar</a></div>
+          <div><span class="inline-block bg-neutral-200 text-on-surface-variant rounded-full px-5 py-2 font-body text-[11px] font-bold tracking-wider uppercase cursor-not-allowed">Próximamente</span></div>
         </article>
-        <article class="product-item flex flex-col group" data-tags="grabado punta seca aguatinta print" data-title="lineas de horizonte">
+        <article class="product-item flex flex-col group opacity-70" data-tags="proximamente líneas de horizonte" data-title="líneas de horizonte">
           <div class="relative overflow-hidden bg-neutral-100 aspect-square mb-4 flex items-center justify-center">
-            <img alt="Líneas de Horizonte" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" src="img/portafolio/lineas-horizonte.jpg">
-            <span class="absolute top-3 left-3 bg-accent text-primary px-3 py-1 rounded-full font-body text-[10px] font-bold tracking-wider uppercase">Grabado</span>
+            <img alt="Líneas de Horizonte" class="object-cover w-full h-full grayscale-[30%]" src="img/portafolio/lineas-horizonte.jpg">
+            <span class="absolute top-3 left-3 bg-neutral-800 text-white px-3 py-1 rounded-full font-body text-[10px] font-bold tracking-wider uppercase">Próximamente</span>
           </div>
           <h3 class="font-heading font-semibold text-base text-primary mb-1">Líneas de Horizonte</h3>
           <p class="font-body text-xs text-on-surface-variant line-clamp-2 mb-2 leading-relaxed">Abstracción del paisaje a través de técnicas de punta seca y aguatinta tradicional.</p>
           <p class="font-heading font-bold text-sm text-primary mb-3 mt-auto">$32.000 CLP</p>
-          <div><a href="producto.html" class="inline-block bg-primary text-on-primary hover:bg-accent hover:text-primary transition-colors rounded-full px-5 py-2 font-body text-[11px] font-bold tracking-wider uppercase">Comprar</a></div>
+          <div><span class="inline-block bg-neutral-200 text-on-surface-variant rounded-full px-5 py-2 font-body text-[11px] font-bold tracking-wider uppercase cursor-not-allowed">Próximamente</span></div>
         </article>
-        <article class="product-item flex flex-col group" data-tags="grabado linoleo seriada print" data-title="estructuras organicas">
+        <article class="product-item flex flex-col group opacity-70" data-tags="proximamente estructuras orgánicas" data-title="estructuras orgánicas">
           <div class="relative overflow-hidden bg-neutral-100 aspect-square mb-4 flex items-center justify-center">
-            <img alt="Estructuras Orgánicas" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" src="img/portafolio/estructuras-organicas.jpg">
-            <span class="absolute top-3 left-3 bg-accent text-primary px-3 py-1 rounded-full font-body text-[10px] font-bold tracking-wider uppercase">Grabado</span>
+            <img alt="Estructuras Orgánicas" class="object-cover w-full h-full grayscale-[30%]" src="img/portafolio/estructuras-organicas.jpg">
+            <span class="absolute top-3 left-3 bg-neutral-800 text-white px-3 py-1 rounded-full font-body text-[10px] font-bold tracking-wider uppercase">Próximamente</span>
           </div>
           <h3 class="font-heading font-semibold text-base text-primary mb-1">Estructuras Orgánicas</h3>
           <p class="font-body text-xs text-on-surface-variant line-clamp-2 mb-2 leading-relaxed">Serie limitada de linóleos que contrastan la rigidez arquitectónica con formas naturales.</p>
           <p class="font-heading font-bold text-sm text-primary mb-3 mt-auto">$28.000 CLP</p>
-          <div><a href="producto.html" class="inline-block bg-primary text-on-primary hover:bg-accent hover:text-primary transition-colors rounded-full px-5 py-2 font-body text-[11px] font-bold tracking-wider uppercase">Comprar</a></div>
+          <div><span class="inline-block bg-neutral-200 text-on-surface-variant rounded-full px-5 py-2 font-body text-[11px] font-bold tracking-wider uppercase cursor-not-allowed">Próximamente</span></div>
         </article>
-        <article class="product-item flex flex-col group" data-tags="print tipografia poster blanco negro" data-title="tipografia abstracta">
+        <article class="product-item flex flex-col group opacity-70" data-tags="proximamente tipografía abstracta" data-title="tipografía abstracta">
           <div class="relative overflow-hidden bg-neutral-100 aspect-square mb-4 flex items-center justify-center">
-            <img alt="Tipografía Abstracta" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" src="img/productos/tipografia-abstracta.jpg">
-            <span class="absolute top-3 left-3 bg-accent text-primary px-3 py-1 rounded-full font-body text-[10px] font-bold tracking-wider uppercase">Print</span>
+            <img alt="Tipografía Abstracta" class="object-cover w-full h-full grayscale-[30%]" src="img/productos/tipografia-abstracta.jpg">
+            <span class="absolute top-3 left-3 bg-neutral-800 text-white px-3 py-1 rounded-full font-body text-[10px] font-bold tracking-wider uppercase">Próximamente</span>
           </div>
           <h3 class="font-heading font-semibold text-base text-primary mb-1">Tipografía Abstracta</h3>
           <p class="font-body text-xs text-on-surface-variant line-clamp-2 mb-2 leading-relaxed">Exploración visual de formas tipográficas en contraste blanco y negro.</p>
           <p class="font-heading font-bold text-sm text-primary mb-3 mt-auto">$26.000 CLP</p>
-          <div><a href="producto.html" class="inline-block bg-primary text-on-primary hover:bg-accent hover:text-primary transition-colors rounded-full px-5 py-2 font-body text-[11px] font-bold tracking-wider uppercase">Comprar</a></div>
+          <div><span class="inline-block bg-neutral-200 text-on-surface-variant rounded-full px-5 py-2 font-body text-[11px] font-bold tracking-wider uppercase cursor-not-allowed">Próximamente</span></div>
         </article>
-      </div>
-    </section>
-
-    <!-- Timbres -->
-    <section id="timbres" class="category-block" data-category-type="timbres">
-      <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 pb-3 border-b border-outline-variant gap-2">
-        <div>
-          <h2 class="font-heading text-2xl font-bold text-primary tracking-tight">Timbres</h2>
-          <p class="font-body text-sm text-on-surface-variant mt-1">Sellos tallados a mano para estampar motivos naturales y patrones sobre papel y tela.</p>
-        </div>
-        <button type="button" class="category-see-more font-body text-xs tracking-widest uppercase font-semibold text-primary hover:text-accent-dark transition-colors flex items-center gap-1.5" data-target-category="timbres">
-          Ver todos los timbres
-          <span class="material-symbols-outlined text-base">arrow_forward</span>
-        </button>
-      </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10">
-        <article class="product-item flex flex-col group" data-tags="timbre sellos madera botanica patron" data-title="set timbres botanicos">
+        <article class="product-item flex flex-col group opacity-70" data-tags="proximamente set timbres botánicos" data-title="set timbres botánicos">
           <div class="relative overflow-hidden bg-neutral-100 aspect-square mb-4 flex items-center justify-center">
-            <img alt="Set Timbres Botánicos" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" src="img/productos/set-timbres-botanicos.jpg">
-            <span class="absolute top-3 left-3 bg-accent text-primary px-3 py-1 rounded-full font-body text-[10px] font-bold tracking-wider uppercase">Timbre</span>
+            <img alt="Set Timbres Botánicos" class="object-cover w-full h-full grayscale-[30%]" src="img/productos/set-timbres-botanicos.jpg">
+            <span class="absolute top-3 left-3 bg-neutral-800 text-white px-3 py-1 rounded-full font-body text-[10px] font-bold tracking-wider uppercase">Próximamente</span>
           </div>
           <h3 class="font-heading font-semibold text-base text-primary mb-1">Set Timbres Botánicos</h3>
           <p class="font-body text-xs text-on-surface-variant line-clamp-2 mb-2 leading-relaxed">Colección de sellos tallados para estampar motivos naturales en papel.</p>
           <p class="font-heading font-bold text-sm text-primary mb-3 mt-auto">$18.000 CLP</p>
-          <div><a href="producto.html" class="inline-block bg-primary text-on-primary hover:bg-accent hover:text-primary transition-colors rounded-full px-5 py-2 font-body text-[11px] font-bold tracking-wider uppercase">Comprar</a></div>
+          <div><span class="inline-block bg-neutral-200 text-on-surface-variant rounded-full px-5 py-2 font-body text-[11px] font-bold tracking-wider uppercase cursor-not-allowed">Próximamente</span></div>
         </article>
-        <article class="product-item flex flex-col group" data-tags="timbre sello monograma madera" data-title="sello monograma botanico">
+        <article class="product-item flex flex-col group opacity-70" data-tags="proximamente sello monograma botánico" data-title="sello monograma botánico">
           <div class="relative overflow-hidden bg-neutral-100 aspect-square mb-4 flex items-center justify-center">
-            <img alt="Sello Monograma Botánico" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" src="img/productos/sello-monograma-botanico.jpg">
-            <span class="absolute top-3 left-3 bg-accent text-primary px-3 py-1 rounded-full font-body text-[10px] font-bold tracking-wider uppercase">Timbre</span>
+            <img alt="Sello Monograma Botánico" class="object-cover w-full h-full grayscale-[30%]" src="img/productos/sello-monograma-botanico.jpg">
+            <span class="absolute top-3 left-3 bg-neutral-800 text-white px-3 py-1 rounded-full font-body text-[10px] font-bold tracking-wider uppercase">Próximamente</span>
           </div>
           <h3 class="font-heading font-semibold text-base text-primary mb-1">Sello Monograma Botánico</h3>
           <p class="font-body text-xs text-on-surface-variant line-clamp-2 mb-2 leading-relaxed">Timbre individual artesanal tallado a mano con mango de madera nativa.</p>
           <p class="font-heading font-bold text-sm text-primary mb-3 mt-auto">$12.000 CLP</p>
-          <div><a href="producto.html" class="inline-block bg-primary text-on-primary hover:bg-accent hover:text-primary transition-colors rounded-full px-5 py-2 font-body text-[11px] font-bold tracking-wider uppercase">Comprar</a></div>
+          <div><span class="inline-block bg-neutral-200 text-on-surface-variant rounded-full px-5 py-2 font-body text-[11px] font-bold tracking-wider uppercase cursor-not-allowed">Próximamente</span></div>
         </article>
-        <article class="product-item flex flex-col group" data-tags="timbre sellos modular patrones" data-title="set geometria patrones">
+        <article class="product-item flex flex-col group opacity-70" data-tags="proximamente set geometría patrones" data-title="set geometría patrones">
           <div class="relative overflow-hidden bg-neutral-100 aspect-square mb-4 flex items-center justify-center">
-            <img alt="Set Geometría &amp; Patrones" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" src="img/productos/set-geometria-patrones.jpg">
-            <span class="absolute top-3 left-3 bg-accent text-primary px-3 py-1 rounded-full font-body text-[10px] font-bold tracking-wider uppercase">Timbre</span>
+            <img alt="Set Geometría &amp; Patrones" class="object-cover w-full h-full grayscale-[30%]" src="img/productos/set-geometria-patrones.jpg">
+            <span class="absolute top-3 left-3 bg-neutral-800 text-white px-3 py-1 rounded-full font-body text-[10px] font-bold tracking-wider uppercase">Próximamente</span>
           </div>
           <h3 class="font-heading font-semibold text-base text-primary mb-1">Set Geometría &amp; Patrones</h3>
           <p class="font-body text-xs text-on-surface-variant line-clamp-2 mb-2 leading-relaxed">Conjunto de 4 sellos modulares para estampación repetitiva y compositiva.</p>
           <p class="font-heading font-bold text-sm text-primary mb-3 mt-auto">$22.000 CLP</p>
-          <div><a href="producto.html" class="inline-block bg-primary text-on-primary hover:bg-accent hover:text-primary transition-colors rounded-full px-5 py-2 font-body text-[11px] font-bold tracking-wider uppercase">Comprar</a></div>
+          <div><span class="inline-block bg-neutral-200 text-on-surface-variant rounded-full px-5 py-2 font-body text-[11px] font-bold tracking-wider uppercase cursor-not-allowed">Próximamente</span></div>
         </article>
-        <article class="product-item flex flex-col group" data-tags="timbre tinta almohadilla estampacion" data-title="tinta especial negra">
+        <article class="product-item flex flex-col group opacity-70" data-tags="proximamente tinta especial negra" data-title="tinta especial negra">
           <div class="relative overflow-hidden bg-neutral-100 aspect-square mb-4 flex items-center justify-center">
-            <img alt="Tinta Especial Negra" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" src="img/productos/tinta-especial-negra.jpg">
-            <span class="absolute top-3 left-3 bg-accent text-primary px-3 py-1 rounded-full font-body text-[10px] font-bold tracking-wider uppercase">Timbre</span>
+            <img alt="Tinta Especial Negra" class="object-cover w-full h-full grayscale-[30%]" src="img/productos/tinta-especial-negra.jpg">
+            <span class="absolute top-3 left-3 bg-neutral-800 text-white px-3 py-1 rounded-full font-body text-[10px] font-bold tracking-wider uppercase">Próximamente</span>
           </div>
           <h3 class="font-heading font-semibold text-base text-primary mb-1">Tinta Especial Negra</h3>
           <p class="font-body text-xs text-on-surface-variant line-clamp-2 mb-2 leading-relaxed">Almohadilla de tinta al óleo de alta pigmentación y fijación permanente.</p>
           <p class="font-heading font-bold text-sm text-primary mb-3 mt-auto">$8.500 CLP</p>
-          <div><a href="producto.html" class="inline-block bg-primary text-on-primary hover:bg-accent hover:text-primary transition-colors rounded-full px-5 py-2 font-body text-[11px] font-bold tracking-wider uppercase">Comprar</a></div>
+          <div><span class="inline-block bg-neutral-200 text-on-surface-variant rounded-full px-5 py-2 font-body text-[11px] font-bold tracking-wider uppercase cursor-not-allowed">Próximamente</span></div>
         </article>
-      </div>
-    </section>
-
-    <!-- Objetos & Cerámica -->
-    <section id="objetos" class="category-block" data-category-type="objetos">
-      <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 pb-3 border-b border-outline-variant gap-2">
-        <div>
-          <h2 class="font-heading text-2xl font-bold text-primary tracking-tight">Objetos &amp; Cerámica</h2>
-          <p class="font-body text-sm text-on-surface-variant mt-1">Piezas de cerámica de alta temperatura y objetos de diseño escultórico.</p>
-        </div>
-        <button type="button" class="category-see-more font-body text-xs tracking-widest uppercase font-semibold text-primary hover:text-accent-dark transition-colors flex items-center gap-1.5" data-target-category="objetos">
-          Ver todos los objetos
-          <span class="material-symbols-outlined text-base">arrow_forward</span>
-        </button>
-      </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10">
-        <article class="product-item flex flex-col group" data-tags="ceramica gres vasija objeto barro" data-title="vasija organica">
+        <article class="product-item flex flex-col group opacity-70" data-tags="proximamente vasija orgánica" data-title="vasija orgánica">
           <div class="relative overflow-hidden bg-neutral-100 aspect-square mb-4 flex items-center justify-center">
-            <img alt="Vasija Orgánica" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" src="img/productos/vasija-organica.jpg">
-            <span class="absolute top-3 left-3 bg-accent text-primary px-3 py-1 rounded-full font-body text-[10px] font-bold tracking-wider uppercase">Cerámica</span>
+            <img alt="Vasija Orgánica" class="object-cover w-full h-full grayscale-[30%]" src="img/productos/vasija-organica.jpg">
+            <span class="absolute top-3 left-3 bg-neutral-800 text-white px-3 py-1 rounded-full font-body text-[10px] font-bold tracking-wider uppercase">Próximamente</span>
           </div>
           <h3 class="font-heading font-semibold text-base text-primary mb-1">Vasija Orgánica</h3>
           <p class="font-body text-xs text-on-surface-variant line-clamp-2 mb-2 leading-relaxed">Pieza única modelada a mano con acabados naturales y texturas orgánicas.</p>
           <p class="font-heading font-bold text-sm text-primary mb-3 mt-auto">$45.000 CLP</p>
-          <div><a href="producto.html" class="inline-block bg-primary text-on-primary hover:bg-accent hover:text-primary transition-colors rounded-full px-5 py-2 font-body text-[11px] font-bold tracking-wider uppercase">Comprar</a></div>
+          <div><span class="inline-block bg-neutral-200 text-on-surface-variant rounded-full px-5 py-2 font-body text-[11px] font-bold tracking-wider uppercase cursor-not-allowed">Próximamente</span></div>
         </article>
-        <article class="product-item flex flex-col group" data-tags="ceramica vasija escultura arcilla" data-title="vasija escultural silencio">
+        <article class="product-item flex flex-col group opacity-70" data-tags="proximamente vasija escultural silencio" data-title="vasija escultural silencio">
           <div class="relative overflow-hidden bg-neutral-100 aspect-square mb-4 flex items-center justify-center">
-            <img alt="Vasija Escultural &quot;Silencio&quot;" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" src="img/productos/vasija-escultural-silencio-1.jpg">
-            <span class="absolute top-3 left-3 bg-accent text-primary px-3 py-1 rounded-full font-body text-[10px] font-bold tracking-wider uppercase">Cerámica</span>
+            <img alt="Vasija Escultural &quot;Silencio&quot;" class="object-cover w-full h-full grayscale-[30%]" src="img/productos/vasija-escultural-silencio-1.jpg">
+            <span class="absolute top-3 left-3 bg-neutral-800 text-white px-3 py-1 rounded-full font-body text-[10px] font-bold tracking-wider uppercase">Próximamente</span>
           </div>
           <h3 class="font-heading font-semibold text-base text-primary mb-1">Vasija Escultural "Silencio"</h3>
           <p class="font-body text-xs text-on-surface-variant line-clamp-2 mb-2 leading-relaxed">Arcilla de origen local, acabado mate sin esmaltar. Dimensiones aprox. 30x15cm.</p>
           <p class="font-heading font-bold text-sm text-primary mb-3 mt-auto">$120.000 CLP</p>
-          <div><a href="producto.html" class="inline-block bg-primary text-on-primary hover:bg-accent hover:text-primary transition-colors rounded-full px-5 py-2 font-body text-[11px] font-bold tracking-wider uppercase">Comprar</a></div>
+          <div><span class="inline-block bg-neutral-200 text-on-surface-variant rounded-full px-5 py-2 font-body text-[11px] font-bold tracking-wider uppercase cursor-not-allowed">Próximamente</span></div>
         </article>
-        <article class="product-item flex flex-col group" data-tags="objetos ceramica cuencos cocina gres" data-title="set de cuencos gres">
+        <article class="product-item flex flex-col group opacity-70" data-tags="proximamente set de cuencos gres" data-title="set de cuencos gres">
           <div class="relative overflow-hidden bg-neutral-100 aspect-square mb-4 flex items-center justify-center">
-            <img alt="Set de Cuencos Gres" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" src="img/productos/set-cuencos-gres.jpg">
-            <span class="absolute top-3 left-3 bg-accent text-primary px-3 py-1 rounded-full font-body text-[10px] font-bold tracking-wider uppercase">Objetos</span>
+            <img alt="Set de Cuencos Gres" class="object-cover w-full h-full grayscale-[30%]" src="img/productos/set-cuencos-gres.jpg">
+            <span class="absolute top-3 left-3 bg-neutral-800 text-white px-3 py-1 rounded-full font-body text-[10px] font-bold tracking-wider uppercase">Próximamente</span>
           </div>
           <h3 class="font-heading font-semibold text-base text-primary mb-1">Set de Cuencos Gres</h3>
           <p class="font-body text-xs text-on-surface-variant line-clamp-2 mb-2 leading-relaxed">Conjunto de tres piezas apilables ideales para uso diario o contemplación.</p>
           <p class="font-heading font-bold text-sm text-primary mb-3 mt-auto">$38.000 CLP</p>
-          <div><a href="producto.html" class="inline-block bg-primary text-on-primary hover:bg-accent hover:text-primary transition-colors rounded-full px-5 py-2 font-body text-[11px] font-bold tracking-wider uppercase">Comprar</a></div>
+          <div><span class="inline-block bg-neutral-200 text-on-surface-variant rounded-full px-5 py-2 font-body text-[11px] font-bold tracking-wider uppercase cursor-not-allowed">Próximamente</span></div>
         </article>
-        <article class="product-item flex flex-col group" data-tags="objetos piedra roca candelabro velas" data-title="candelabro litico">
+        <article class="product-item flex flex-col group opacity-70" data-tags="proximamente candelabro lítico" data-title="candelabro lítico">
           <div class="relative overflow-hidden bg-neutral-100 aspect-square mb-4 flex items-center justify-center">
-            <img alt="Candelabro Lítico" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" src="img/productos/candelabro-litico.jpg">
-            <span class="absolute top-3 left-3 bg-accent text-primary px-3 py-1 rounded-full font-body text-[10px] font-bold tracking-wider uppercase">Objetos</span>
+            <img alt="Candelabro Lítico" class="object-cover w-full h-full grayscale-[30%]" src="img/productos/candelabro-litico.jpg">
+            <span class="absolute top-3 left-3 bg-neutral-800 text-white px-3 py-1 rounded-full font-body text-[10px] font-bold tracking-wider uppercase">Próximamente</span>
           </div>
           <h3 class="font-heading font-semibold text-base text-primary mb-1">Candelabro Lítico</h3>
           <p class="font-body text-xs text-on-surface-variant line-clamp-2 mb-2 leading-relaxed">Soporte para velas tallado a mano en piedra volcánica natural.</p>
           <p class="font-heading font-bold text-sm text-primary mb-3 mt-auto">$42.000 CLP</p>
-          <div><a href="producto.html" class="inline-block bg-primary text-on-primary hover:bg-accent hover:text-primary transition-colors rounded-full px-5 py-2 font-body text-[11px] font-bold tracking-wider uppercase">Comprar</a></div>
+          <div><span class="inline-block bg-neutral-200 text-on-surface-variant rounded-full px-5 py-2 font-body text-[11px] font-bold tracking-wider uppercase cursor-not-allowed">Próximamente</span></div>
         </article>
       </div>
     </section>
@@ -385,7 +618,7 @@
           <span class="material-symbols-outlined text-primary text-2xl relative z-10">lock</span>
         </div>
         <h4 class="font-heading font-bold text-sm uppercase tracking-wider text-primary mb-1.5">Compra segura</h4>
-        <p class="font-body text-xs text-on-surface-variant leading-relaxed">Pago online mediante plataformas protegidas y encriptadas.</p>
+        <p class="font-body text-xs text-on-surface-variant leading-relaxed">Transferencia bancaria o link de pago seguro. Nunca pedimos datos de tarjeta por correo.</p>
       </div>
       <div class="flex flex-col group">
         <div class="relative w-12 h-12 mb-4 flex items-center justify-center">
@@ -426,10 +659,9 @@
         <span class="font-body text-xs tracking-widest uppercase font-bold text-primary mb-4">Tienda</span>
         <ul class="space-y-2.5 text-xs text-on-surface-variant font-body">
           <li><a href="tienda.html" class="hover:text-primary transition-colors">Ver todo</a></li>
+          <li><a href="tienda.html#grabados" class="hover:text-primary transition-colors">Grabados</a></li>
           <li><a href="tienda.html#pinturas" class="hover:text-primary transition-colors">Pinturas</a></li>
-          <li><a href="tienda.html#prints" class="hover:text-primary transition-colors">Prints</a></li>
-          <li><a href="tienda.html#timbres" class="hover:text-primary transition-colors">Timbres</a></li>
-          <li><a href="tienda.html#objetos" class="hover:text-primary transition-colors">Objetos</a></li>
+          <li><a href="tienda.html#serigrafias" class="hover:text-primary transition-colors">Serigrafías</a></li>
         </ul>
       </div>
       <div class="flex flex-col">
@@ -443,7 +675,8 @@
         <span class="font-body text-xs tracking-widest uppercase font-bold text-primary mb-4">Ayuda</span>
         <ul class="space-y-2.5 text-xs text-on-surface-variant font-body">
           <li><a href="contacto.html" class="hover:text-primary transition-colors">Contacto</a></li>
-          <li><a href="#" class="hover:text-primary transition-colors">Cambios y devoluciones</a></li>
+          <li><a href="politica-envios.html" class="hover:text-primary transition-colors">Política de envíos</a></li>
+          <li><a href="cambios-y-devoluciones.html" class="hover:text-primary transition-colors">Cambios y devoluciones</a></li>
           <li><a href="index.html#preguntas-frecuentes" class="hover:text-primary transition-colors">Preguntas frecuentes</a></li>
         </ul>
       </div>
@@ -451,8 +684,8 @@
     <div class="border-t border-outline-variant mt-12 pt-6 flex flex-col sm:flex-row justify-between items-center text-xs text-on-surface-variant gap-4">
       <p>© 2026 ielou.studio · Chile</p>
       <div class="flex gap-6">
-        <a href="#" class="hover:text-primary transition-colors">Términos y condiciones</a>
-        <a href="#" class="hover:text-primary transition-colors">Política de privacidad</a>
+        <a href="terminos-y-condiciones.html" class="hover:text-primary transition-colors">Términos y condiciones</a>
+        <a href="politica-privacidad.html" class="hover:text-primary transition-colors">Política de privacidad</a>
       </div>
     </div>
   </div>
