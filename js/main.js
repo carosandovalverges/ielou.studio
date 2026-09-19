@@ -11,6 +11,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initCheckoutForm();
   initProjectCarousel();
   initTiendaFilters();
+  initAutoCarousels();
+  initBackToTop();
+  initCartBadge();
 });
 
 /* ---------- Menú mobile (header) ---------- */
@@ -345,7 +348,7 @@ function initTiendaFilters() {
   const seeMoreButtons = document.querySelectorAll('.category-see-more');
   const noResultsBox = document.getElementById('no-results');
   const itemCounter = document.getElementById('item-counter');
-  if (!searchInput || !filterPills.length) return;
+  if (!filterPills.length) return;
 
   let currentCategory = 'todas';
   let searchQuery = '';
@@ -417,14 +420,129 @@ function initTiendaFilters() {
     });
   });
 
-  searchInput.addEventListener('input', (e) => {
-    searchQuery = e.target.value;
-    filterCatalog();
-  });
-
-  const hashCategory = window.location.hash.replace('#', '');
-  const hashPill = document.querySelector(`.filter-pill[data-category="${hashCategory}"]`);
-  if (hashPill) {
-    hashPill.click();
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      searchQuery = e.target.value;
+      filterCatalog();
+    });
   }
+
+  function applyHashCategory() {
+    const hashCategory = window.location.hash.replace('#', '');
+    const hashPill = document.querySelector(`.filter-pill[data-category="${hashCategory}"]`);
+    if (hashPill) hashPill.click();
+  }
+
+  applyHashCategory();
+  window.addEventListener('hashchange', applyHashCategory);
+}
+
+/* ---------- Carruseles automáticos mobile (envíos/categorías) ---------- */
+function initAutoCarousels() {
+  const AUTOPLAY_MS = 4500;
+
+  document.querySelectorAll('.auto-carousel').forEach((carousel) => {
+    const track = carousel.querySelector('.auto-carousel-track');
+    const slides = Array.from(carousel.querySelectorAll('.auto-carousel-slide'));
+    const dotsBox = carousel.querySelector('.auto-carousel-dots');
+    if (!track || slides.length < 2 || !dotsBox) return;
+
+    let index = 0;
+    let timer = null;
+
+    const dots = slides.map((_, i) => {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.setAttribute('aria-label', `Ir a la diapositiva ${i + 1}`);
+      dot.className = 'w-2 h-2 rounded-full transition-colors ' + (i === 0 ? 'bg-primary' : 'bg-neutral-300');
+      dot.addEventListener('click', () => goTo(i, true));
+      dotsBox.appendChild(dot);
+      return dot;
+    });
+
+    function update() {
+      track.style.transform = `translateX(-${index * 100}%)`;
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('bg-primary', i === index);
+        dot.classList.toggle('bg-neutral-300', i !== index);
+      });
+    }
+
+    function goTo(i, userTriggered) {
+      index = (i + slides.length) % slides.length;
+      update();
+      if (userTriggered) restart();
+    }
+
+    function restart() {
+      if (timer) clearInterval(timer);
+      timer = setInterval(() => goTo(index + 1), AUTOPLAY_MS);
+    }
+
+    let touchStartX = 0;
+    track.addEventListener('touchstart', (e) => {
+      touchStartX = e.touches[0].clientX;
+    }, { passive: true });
+    track.addEventListener('touchend', (e) => {
+      const delta = e.changedTouches[0].clientX - touchStartX;
+      if (Math.abs(delta) > 40) goTo(index + (delta < 0 ? 1 : -1), true);
+    });
+
+    update();
+    restart();
+  });
+}
+
+/* ---------- Botón flotante "volver arriba" (todo el sitio) ---------- */
+function initBackToTop() {
+  const btn = document.createElement('button');
+  btn.type = 'button';
+  btn.id = 'back-to-top';
+  btn.setAttribute('aria-label', 'Volver arriba');
+  btn.className = 'fixed bottom-6 right-6 z-40 w-11 h-11 rounded-full bg-primary text-on-primary shadow-lg flex items-center justify-center opacity-0 pointer-events-none translate-y-2 transition-all duration-300 hover:bg-accent hover:text-primary';
+  btn.innerHTML = '<span class="material-symbols-outlined text-[22px]">arrow_upward</span>';
+  document.body.appendChild(btn);
+
+  function toggle() {
+    const show = window.scrollY > 480;
+    btn.classList.toggle('opacity-0', !show);
+    btn.classList.toggle('pointer-events-none', !show);
+    btn.classList.toggle('translate-y-2', !show);
+  }
+
+  window.addEventListener('scroll', toggle, { passive: true });
+  btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  toggle();
+}
+
+/* ---------- Contador de carrito (localStorage, sin backend) ---------- */
+const CART_COUNT_KEY = 'ielou_cart_count';
+
+function getCartCount() {
+  return parseInt(localStorage.getItem(CART_COUNT_KEY) || '0', 10) || 0;
+}
+
+function setCartCount(n) {
+  localStorage.setItem(CART_COUNT_KEY, String(n));
+  document.querySelectorAll('.cart-count-badge').forEach((el) => {
+    el.textContent = String(n);
+  });
+}
+
+function initCartBadge() {
+  setCartCount(getCartCount());
+
+  document.querySelectorAll('.add-to-cart-btn').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      setCartCount(getCartCount() + 1);
+      const original = btn.textContent;
+      btn.textContent = 'Agregado ✓';
+      btn.disabled = true;
+      setTimeout(() => {
+        btn.textContent = original;
+        btn.disabled = false;
+      }, 1200);
+    });
+  });
 }

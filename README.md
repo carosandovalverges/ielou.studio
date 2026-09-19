@@ -61,6 +61,31 @@ páginas.**
 Breakpoints usados (compatibles con Elementor sin plugins): `px-6` (mobile) →
 `md:px-16` (768px, tablet) → `lg:px-24` (1024px+, desktop).
 
+## Formatos de imagen por plantilla
+
+Todas las imágenes usan `object-cover` (la imagen llena el recuadro y se
+recorta lo que sobre) con `object-position: center` (recorta parejo desde
+los 4 bordes hacia el centro — **no** hay forma de mover el foco desde el
+HTML). Esto significa que **lo importante de cada foto debe quedar
+centrado dentro del recuadro ya en el archivo que subes**, si no, el
+recorte automático puede comerse un borde de la obra o descentrarla.
+
+| Dónde aparece | Proporción (ancho:alto) | Recomendación de archivo | Notas |
+|---|---|---|---|
+| Tarjetas de obra en `tienda.html`, Destacados de Home, grilla de `portafolio.html` | **1:1** (cuadrado) | Mínimo 1200×1200px, JPG | La obra centrada y ocupando la mayor parte del cuadro; deja algo de aire parejo en los 4 lados. |
+| Imagen principal en `producto-<obra>.html` | **4:5** (vertical) | Mínimo 1200×1500px, JPG | Es la foto más grande del sitio — la que más se nota si está mal encuadrada. Mismo criterio: obra centrada, sin recortar bordes importantes. |
+| Miniatura del resumen en `checkout.html` | ~6:7 (vertical, casi igual a 4:5) | Reutiliza la misma foto de `producto-<obra>.html` | No hace falta un archivo aparte. |
+| Foto de portada + miniaturas del carrusel en `proyecto.html` | Portada: variable (~16:9 a 4:3 según alto de pantalla, landscape); miniaturas: 1:1 | Portada mínimo 1600×1000px, JPG | La portada cambia de alto según el viewport (420px a 70vh, tope 750px), así que conviene una foto horizontal con la obra centrada y margen generoso arriba/abajo para que el recorte automático no la deje muy ajustada en pantallas bajas. |
+| Foto de `contacto.html` (espacio de trabajo) | **1:1** (cuadrado) | Mínimo 1200×1200px, JPG | Mismo criterio que las tarjetas. |
+
+Las 25 fotos actuales de obras reales (`img/productos/`) son fotos del
+taller (la obra sostenida a mano, con fondo), no recortes pre-armados a
+estas proporciones — por eso algunas no se ven perfectamente centradas al
+aplicarles el recorte automático. Si las vuelves a editar, lo ideal es
+exportarlas ya recortadas en **1:1** (para tienda/portafolio) y en **4:5**
+(para la página de detalle) con la obra centrada, en vez de dejar que el
+navegador decida el recorte.
+
 ## Qué se corrigió del diseño original de Stitch
 
 El diseño llegó como 6 páginas exportadas por separado, cada una con su
@@ -183,9 +208,10 @@ cobro por tarjeta):
   Confirmar también si esa casilla existe o si debe ir a otro correo.
   Considerar también reCAPTCHA/Turnstile si el formulario recibe spam.
 - [x] **Páginas de producto por obra**: las 25 piezas reales ya tienen su
-  propia página (`producto-<slug>.html`), generadas desde
-  `Ielou.studio/../.../scratchpad/productos/build_catalog.py` (script de
-  referencia, no forma parte del sitio). `producto.html` /
+  propia página (`producto-<slug>.html`). Se generaron con un script
+  temporal que **no** forma parte del repo y que ya quedó desactualizado
+  (después se hicieron cambios de estilo a mano) — editar las páginas
+  directamente. `producto.html` /
   `proyecto.html` quedan como plantillas genéricas sin usar — se pueden
   eliminar o reutilizar como base para futuras piezas. El checkout recibe
   nombre/precio/imagen/categoría por parámetros de URL
@@ -203,6 +229,16 @@ cobro por tarjeta):
   correo"). El correo de confirmación al cliente (plantilla de EmailJS) es
   donde Caro debe escribir sus datos de transferencia reales.
 - [ ] **Redes sociales**: Facebook apunta a `#` (no se proporcionó URL).
+- [ ] **Re-editar las fotos de obras** (tarea de Caro como diseñadora):
+  exportar cada foto de `img/productos/` recortada a **1:1** (tarjetas) y
+  **4:5** (página de obra) con la obra centrada — ver "Formatos de imagen
+  por plantilla". Lo mismo para portafolio (1:1) y contacto (1:1).
+- [ ] **Botón "Agregar al carrito"**: hoy solo suma un contador guardado en
+  el navegador (`localStorage`, clave `ielou_cart_count`) que se ve en el
+  ícono de bolsa del header. **No hay carrito real**: no guarda qué obras
+  se agregaron ni las lleva al checkout (el checkout sigue siendo de una
+  obra a la vez, vía "Solicitar compra"). Decidir si se quiere un carrito
+  real (multi-obra) o quitar el botón/contador antes de producción.
 
 ## Dependencias de Elementor a tener en cuenta
 
