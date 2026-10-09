@@ -12,7 +12,6 @@ Ielou.studio/
 ├── tienda.html                   Catálogo completo (Grabados/Pinturas/Serigrafías + Próximamente; buscador + filtro)
 ├── producto-<obra>.html          25 páginas de detalle, una por obra real (ver catálogo real más abajo)
 ├── portafolio.html               Portafolio / artes visuales
-├── producto.html                 Plantilla genérica sin uso (quedó de la etapa de mockups; ver Pendientes)
 ├── checkout.html                 Checkout / solicitud de compra (recibe la obra por parámetros de URL)
 ├── contacto.html                 Contacto
 ├── proyecto.html                 Detalle de proyecto (plantilla genérica)
@@ -186,11 +185,10 @@ cobro por tarjeta):
   19.496, 10 días corridos) es el punto más delicado del set legal — conviene
   que la revise alguien con conocimiento legal para el caso específico del
   negocio.
-- El sitio hoy usa **dos correos de contacto distintos**:
-  `hola@ielou.studio` (formulario de `contacto.html`, definido en una
-  sesión anterior) y `carola.sandoval@hotmail.com` (usado en el FAQ y las
-  4 páginas legales, tal como lo especificó Caro). Confirmar cuál es el
-  correo real de atención y unificarlo en todo el sitio.
+- **Correo único (provisorio)**: todo el sitio usa `carola.sandoval@hotmail.com`
+  (contacto, FAQ, páginas legales y checkout). Cuando exista un correo del
+  dominio (p. ej. `hola@ielou.studio`), cambiarlo en esos archivos y en
+  `STUDIO_EMAIL` de `js/main.js`.
 
 ## Pendientes / cosas a confirmar con Caro antes de producción
 
@@ -202,18 +200,15 @@ cobro por tarjeta):
   quitarlos cuando haya piezas reales para esas categorías (pintura en
   lienzo, timbres, cerámica).
 - [ ] **Email de contacto**: el formulario de `contacto.html` apunta a
-  `hola@ielou.studio` vía `mailto:` (fallback estático, sin backend). En
+  `carola.sandoval@hotmail.com` vía `mailto:` (fallback estático, sin backend). En
   WordPress, reemplazar por el widget de formulario nativo de **Elementor
   Pro** o por **WPForms** (gratis) — confirmar cuál tiene el cliente.
-  Confirmar también si esa casilla existe o si debe ir a otro correo.
   Considerar también reCAPTCHA/Turnstile si el formulario recibe spam.
 - [x] **Páginas de producto por obra**: las 25 piezas reales ya tienen su
   propia página (`producto-<slug>.html`). Se generaron con un script
   temporal que **no** forma parte del repo y que ya quedó desactualizado
   (después se hicieron cambios de estilo a mano) — editar las páginas
-  directamente. `producto.html` /
-  `proyecto.html` quedan como plantillas genéricas sin usar — se pueden
-  eliminar o reutilizar como base para futuras piezas. El checkout recibe
+  directamente. `producto.html` (plantilla genérica del piloto) fue eliminada. El checkout recibe
   nombre/precio/imagen/categoría por parámetros de URL
   (`checkout.html?nombre=...&precio=...&img=...&categoria=...`), poblados
   por JS en `js/main.js` (`applyCheckoutProductFromUrl`).
