@@ -14,7 +14,8 @@ Ielou.studio/
 ├── portafolio.html               Portafolio / artes visuales
 ├── checkout.html                 Checkout / solicitud de compra (recibe la obra por parámetros de URL)
 ├── contacto.html                 Contacto
-├── proyecto.html                 Detalle de proyecto (plantilla genérica)
+├── proyecto.html                 Proyecto de portafolio: Dorar la píldora
+├── muestras-del-sur.html         Proyecto de portafolio: Muestras del Sur (misma estructura que proyecto.html)
 ├── cambios-y-devoluciones.html   Política de cambios y devoluciones
 ├── politica-envios.html          Política de envíos
 ├── politica-privacidad.html      Política de privacidad
@@ -74,7 +75,7 @@ recorte automático puede comerse un borde de la obra o descentrarla.
 | Tarjetas de obra en `tienda.html`, Destacados de Home, grilla de `portafolio.html` | **1:1** (cuadrado) | Mínimo 1200×1200px, JPG | La obra centrada y ocupando la mayor parte del cuadro; deja algo de aire parejo en los 4 lados. |
 | Imagen principal en `producto-<obra>.html` | **4:5** (vertical) | Mínimo 1200×1500px, JPG | Es la foto más grande del sitio — la que más se nota si está mal encuadrada. Mismo criterio: obra centrada, sin recortar bordes importantes. |
 | Miniatura del resumen en `checkout.html` | ~6:7 (vertical, casi igual a 4:5) | Reutiliza la misma foto de `producto-<obra>.html` | No hace falta un archivo aparte. |
-| Foto de portada + miniaturas del carrusel en `proyecto.html` | Portada: variable (~16:9 a 4:3 según alto de pantalla, landscape); miniaturas: 1:1 | Portada mínimo 1600×1000px, JPG | La portada cambia de alto según el viewport (420px a 70vh, tope 750px), así que conviene una foto horizontal con la obra centrada y margen generoso arriba/abajo para que el recorte automático no la deje muy ajustada en pantallas bajas. |
+| Portada + miniaturas del carrusel y recuadros de detalle en `proyecto.html` y `muestras-del-sur.html` | Portada y recuadros: **3:2** (horizontal) en celular y tablet; en desktop (≥1024px) la portada pasa a un alto de 70 % de la pantalla (≈1,7:1) y recorta un poco arriba y abajo. Miniaturas: 1:1 | Portada 1600×1067px, recuadros 1200×800px, JPG | Si la foto es 3:2 no se recorta nada en celular ni tablet: el contenedor toma la proporción de la foto. Una foto de otra proporción se recorta desde el centro. |
 | Foto de `contacto.html` (espacio de trabajo) | **1:1** (cuadrado) | Mínimo 1200×1200px, JPG | Mismo criterio que las tarjetas. |
 
 Las 25 fotos actuales de obras reales (`img/productos/`) son fotos del
