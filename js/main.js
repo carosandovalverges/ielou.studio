@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initProjectCarousel();
   initTiendaFilters();
   initAutoCarousels();
+  initHeroCarousel();
   initBackToTop();
   initCartBadge();
 });
@@ -545,4 +546,18 @@ function initCartBadge() {
       }, 1200);
     });
   });
+}
+
+/* ---------- Hero de la home: fondo con fundido entre imágenes ---------- */
+function initHeroCarousel() {
+  const slides = document.querySelectorAll('.hero-slide');
+  if (slides.length < 2) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  let index = 0;
+  setInterval(() => {
+    slides[index].classList.replace('opacity-100', 'opacity-0');
+    index = (index + 1) % slides.length;
+    slides[index].classList.replace('opacity-0', 'opacity-100');
+  }, 6000);
 }
